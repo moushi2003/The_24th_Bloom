@@ -364,3 +364,350 @@ button:hover{
     }
 
 }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    overflow:hidden;
+    background:#020617;
+    font-family:Poppins, sans-serif;
+
+}
+
+
+
+.garden-scene{
+
+    width:100vw;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #020617,
+        #0f172a,
+        #172554
+    );
+
+}
+
+
+
+/* Moon */
+
+.moon{
+
+    position:absolute;
+
+    top:80px;
+    right:150px;
+
+    width:70px;
+    height:70px;
+
+    background:#fff7cc;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 20px #fff7cc,
+    0 0 50px #fde68a;
+
+}
+
+
+
+/* Small stars */
+
+.garden-scene::before{
+
+    content:"✦ ✧ ✦  ✧ ✦  ✦ ✧";
+
+    position:absolute;
+
+    top:50px;
+    left:80px;
+
+    color:white;
+
+    font-size:25px;
+
+    letter-spacing:25px;
+
+    animation:twinkle 3s infinite alternate;
+
+}
+
+
+
+@keyframes twinkle{
+
+    from{
+        opacity:.3;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+
+/* Shooting stars */
+
+.shooting-star{
+
+    position:absolute;
+
+    width:120px;
+    height:2px;
+
+    background:white;
+
+    transform:rotate(-35deg);
+
+    opacity:0;
+
+    animation:shoot 5s infinite;
+
+}
+
+
+
+.star1{
+
+    top:180px;
+    left:70%;
+
+}
+
+
+
+.star2{
+
+    top:260px;
+    left:40%;
+
+    animation-delay:3s;
+
+}
+
+
+
+@keyframes shoot{
+
+    0%{
+
+        opacity:0;
+        transform:translate(0,0) rotate(-35deg);
+
+    }
+
+
+    10%{
+
+        opacity:1;
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+        transform:
+        translate(-300px,300px)
+        rotate(-35deg);
+
+    }
+
+}
+
+
+
+
+
+/* Quote */
+
+.garden-quote{
+
+    position:absolute;
+
+    left:50px;
+
+    bottom:150px;
+
+    color:#e0f2fe;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    font-style:italic;
+
+    text-shadow:
+
+    0 0 10px #38bdf8,
+    0 0 20px #ffffff;
+
+    animation:glow 3s infinite alternate;
+
+}
+
+
+
+@keyframes glow{
+
+    from{
+        opacity:.6;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+
+
+/* River */
+
+.river{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:220px;
+
+    background:
+
+    linear-gradient(
+        to bottom,
+        #164e63,
+        #082f49
+    );
+
+
+    border-radius:50% 50% 0 0;
+
+    box-shadow:
+
+    0 -10px 40px #67e8f9;
+
+}
+
+
+
+
+
+/* Flowers */
+
+.flowers{
+
+    position:absolute;
+
+    bottom:160px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    padding:0 80px;
+
+}
+
+
+
+.flower{
+
+    font-size:28px;
+
+    animation:sway 3s infinite ease-in-out;
+
+}
+
+
+
+.flower:nth-child(even){
+
+    animation-delay:.5s;
+
+}
+
+
+
+@keyframes sway{
+
+    0%,100%{
+
+        transform:rotate(-5deg);
+
+    }
+
+    50%{
+
+        transform:rotate(5deg);
+
+    }
+
+}
+
+
+
+
+/* Tree */
+
+.tree{
+
+    position:absolute;
+
+    right:40px;
+
+    bottom:170px;
+
+    font-size:160px;
+
+    filter:
+
+    drop-shadow(0 0 20px #000);
+
+}
+
+
+
+
+/* Boy */
+
+.boy{
+
+    position:absolute;
+
+    right:230px;
+
+    bottom:180px;
+
+    font-size:55px;
+
+    filter:
+
+    drop-shadow(0 0 10px white);
+
+}
