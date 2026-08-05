@@ -70,23 +70,40 @@ body{
 .web{
 
     position:absolute;
-    width:220px;
-    height:220px;
-    border:2px solid rgba(255,255,255,.3);
+    width:260px;
+    height:260px;
     border-radius:50%;
+
+    background:
+    repeating-radial-gradient(
+        circle,
+        transparent 0 25px,
+        rgba(255,255,255,0.35) 27px
+    ),
+    repeating-conic-gradient(
+        from 0deg,
+        transparent 0 20deg,
+        rgba(255,255,255,0.35) 22deg
+    );
+
+    opacity:0.8;
+    filter:drop-shadow(0 0 8px white);
 
 }
 
 
+.web-left{
 
-.web::before,
-.web::after{
+    top:-120px;
+    left:-120px;
 
-    content:"";
-    position:absolute;
-    inset:20px;
-    border:1px solid rgba(255,255,255,.25);
-    border-radius:50%;
+}
+
+
+.web-right{
+
+    top:-120px;
+    right:-120px;
 
 }
 
