@@ -305,3 +305,13 @@ section {
     opacity: 0.8;
     margin-top: 15px;
 }
+/* Fix section visibility */
+section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hide scrollbar for cinematic look */
+body {
+    overflow-x: hidden;
+}
