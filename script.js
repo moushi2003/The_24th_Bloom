@@ -1,33 +1,89 @@
-// The 24th Bloom
-// Automatic Cinematic Journey
+// Typing Effect
 
-const sections = document.querySelectorAll("section");
+const text = "A little universe made only for you... ❤️";
 
-let current = 0;
+let index = 0;
 
-// First scene visible
-sections.forEach((section, index) => {
-    if (index === 0) {
-        section.style.opacity = "1";
-        section.style.transform = "translateY(0)";
-    } else {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(40px)";
+const typingText = document.getElementById("typing");
+
+
+function typeWriter(){
+
+    if(index < text.length){
+
+        typingText.innerHTML += text.charAt(index);
+
+        index++;
+
+        setTimeout(typeWriter,80);
+
     }
-});
 
-function nextScene() {
-    if (current < sections.length - 1) {
-
-        sections[current].style.opacity = "0";
-        sections[current].style.transform = "translateY(-40px)";
-
-        current++;
-
-        sections[current].style.opacity = "1";
-        sections[current].style.transform = "translateY(0)";
-    }
 }
 
-// Change scene automatically every 6 seconds
-setInterval(nextScene, 6000);
+
+typeWriter();
+
+
+
+
+// Music Button
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+
+musicBtn.addEventListener("click",()=>{
+
+    music.play();
+
+    musicBtn.innerHTML="🎵 Playing Theme";
+
+});
+
+
+
+
+// Floating light particles
+
+function createStar(){
+
+    const star=document.createElement("div");
+
+    star.innerHTML="✦";
+
+    star.style.position="absolute";
+
+    star.style.color="white";
+
+    star.style.left=Math.random()*100+"vw";
+
+    star.style.top="100vh";
+
+    star.style.opacity=Math.random();
+
+    star.style.fontSize=(10+Math.random()*20)+"px";
+
+    star.style.transition="8s linear";
+
+    document.querySelector(".scene").appendChild(star);
+
+
+    setTimeout(()=>{
+
+        star.style.top="-10vh";
+
+    },100);
+
+
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },8000);
+
+}
+
+
+setInterval(createStar,500);
