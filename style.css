@@ -4,21 +4,16 @@
     box-sizing:border-box;
 }
 
-
 body{
-
     min-height:200vh;
     overflow-x:hidden;
-    overflow-y:auto;
-    font-family:'Poppins',sans-serif;
     background:#020617;
+    font-family:'Poppins',sans-serif;
     color:white;
-
 }
 
 
 /* ================= SPIDER SCENE ================= */
-
 
 .scene{
 
@@ -33,9 +28,6 @@ body{
 }
 
 
-
-/* Red Blue cinematic glow */
-
 .scene::before{
 
     content:"";
@@ -45,16 +37,13 @@ body{
     height:500px;
 
     background:red;
-
     filter:blur(150px);
-
     opacity:.25;
 
     top:20%;
     left:-150px;
 
 }
-
 
 
 .scene::after{
@@ -68,7 +57,6 @@ body{
     background:#0066ff;
 
     filter:blur(150px);
-
     opacity:.25;
 
     right:-150px;
@@ -76,9 +64,6 @@ body{
 
 }
 
-
-
-/* Spider Web */
 
 
 .web{
@@ -107,7 +92,6 @@ body{
 
 
     opacity:.8;
-
     filter:drop-shadow(0 0 8px white);
 
 }
@@ -115,24 +99,16 @@ body{
 
 
 .web-left{
-
     top:-80px;
     left:-80px;
-
 }
-
 
 
 .web-right{
-
     top:-80px;
     right:-80px;
-
 }
 
-
-
-/* Hanging Spider-Man */
 
 
 .spiderman{
@@ -153,7 +129,6 @@ body{
 .thread{
 
     width:2px;
-
     height:170px;
 
     background:white;
@@ -167,21 +142,16 @@ body{
 .mask{
 
     width:90px;
-
     height:90px;
 
     background:
     linear-gradient(135deg,#e50914,#111);
 
-
     border-radius:45%;
 
     position:relative;
 
-
-    box-shadow:
-
-    0 0 25px red;
+    box-shadow:0 0 25px red;
 
 }
 
@@ -192,7 +162,6 @@ body{
     position:absolute;
 
     width:28px;
-
     height:40px;
 
     background:white;
@@ -204,19 +173,13 @@ body{
 }
 
 
-
 .left-eye{
-
     left:15px;
-
 }
 
 
-
 .right-eye{
-
     right:15px;
-
 }
 
 
@@ -224,7 +187,6 @@ body{
 .suit{
 
     width:70px;
-
     height:90px;
 
     background:#e50914;
@@ -252,31 +214,18 @@ body{
 
 
 
-/* Swing Animation */
-
-
 @keyframes swing{
 
-    0%,100%{
+0%,100%{
+transform:translateX(-50%) rotate(-4deg);
+}
 
-        transform:translateX(-50%) rotate(-4deg);
-
-    }
-
-
-    50%{
-
-        transform:translateX(-50%) rotate(4deg);
-
-    }
+50%{
+transform:translateX(-50%) rotate(4deg);
+}
 
 }
 
-
-
-
-
-/* Birthday Text */
 
 
 .message{
@@ -298,13 +247,10 @@ body{
     font-size:55px;
 
     text-shadow:
-
     0 0 15px red,
-
     0 0 30px #0066ff;
 
 }
-
 
 
 .message h2{
@@ -316,20 +262,15 @@ body{
 }
 
 
-
 .message h3{
 
     font-size:45px;
 
     color:#ff3355;
 
-
-    text-shadow:
-
-    0 0 20px red;
+    text-shadow:0 0 20px red;
 
 }
-
 
 
 .message p{
@@ -344,7 +285,6 @@ body{
 
 
 
-
 button{
 
     position:absolute;
@@ -355,41 +295,25 @@ button{
 
     transform:translateX(-50%);
 
-
     padding:15px 40px;
-
 
     border:none;
 
     border-radius:40px;
 
-
-    background:
-
-    linear-gradient(45deg,#e50914,#0066ff);
-
+    background:linear-gradient(45deg,#e50914,#0066ff);
 
     color:white;
 
     font-size:18px;
 
-
     cursor:pointer;
-
 
     box-shadow:0 0 20px red;
 
 }
 
-
-
-button:hover{
-
-    transform:translateX(-50%) scale(1.1);
-
-}
-
-/* ================= GARDEN SCENE ================= */
+/* ================= VILLAGE NIGHT SCENE ================= */
 
 
 .garden-scene{
@@ -401,271 +325,118 @@ button:hover{
 
     overflow:hidden;
 
-
     background:
 
     linear-gradient(
         to bottom,
         #020617,
-        #0f172a,
-        #172554
+        #1e293b,
+        #064e3b
     );
 
 }
 
 
 
-/* Moon */
 
+/* Moon */
 
 .moon{
 
     position:absolute;
 
-    top:80px;
-
+    top:70px;
     right:150px;
 
-
-    width:70px;
-
-    height:70px;
-
+    width:80px;
+    height:80px;
 
     background:#fff7cc;
 
-
     border-radius:50%;
-
 
     box-shadow:
 
-    0 0 20px #fff7cc,
-
-    0 0 50px #fde68a;
+    0 0 25px #fff7cc,
+    0 0 60px #fde68a;
 
 }
 
 
 
-/* Stars */
 
+/* Village House */
 
-.garden-scene::before{
-
-    content:"✦ ✧ ✦  ✧ ✦  ✦ ✧";
-
+.village-house{
 
     position:absolute;
 
+    left:70px;
 
-    top:50px;
+    bottom:180px;
 
-    left:80px;
-
-
-    color:white;
-
-
-    font-size:25px;
-
-
-    letter-spacing:25px;
-
-
-    animation:twinkle 3s infinite alternate;
+    font-size:90px;
 
 }
 
 
 
-@keyframes twinkle{
 
-    from{
+/* Big Tree */
 
-        opacity:.3;
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-
-
-/* Shooting Stars */
-
-
-.shooting-star{
+.village-tree{
 
     position:absolute;
 
-
-    width:120px;
-
-    height:2px;
-
-
-    background:white;
-
-
-    transform:rotate(-35deg);
-
-
-    opacity:0;
-
-
-    animation:shoot 5s infinite;
-
-}
-
-
-
-.star1{
-
-    top:180px;
-
-    left:70%;
-
-}
-
-
-
-.star2{
-
-    top:260px;
-
-    left:40%;
-
-
-    animation-delay:3s;
-
-}
-
-
-
-@keyframes shoot{
-
-
-    0%{
-
-        opacity:0;
-
-    }
-
-
-    10%{
-
-        opacity:1;
-
-    }
-
-
-    100%{
-
-        opacity:0;
-
-        transform:
-
-        translate(-300px,300px)
-
-        rotate(-35deg);
-
-    }
-
-}
-
-
-
-
-
-/* Garden Quote */
-
-
-.garden-quote{
-
-    position:absolute;
-
-
-    left:50px;
+    right:70px;
 
     bottom:150px;
 
+    font-size:220px;
 
-    color:#e0f2fe;
-
-
-    font-size:18px;
-
-
-    line-height:1.8;
-
-
-    font-style:italic;
-
-
-    text-shadow:
-
-    0 0 10px #38bdf8,
-
-    0 0 20px white;
-
-
-    animation:glow 3s infinite alternate;
-
-}
-
-
-
-@keyframes glow{
-
-    from{
-
-        opacity:.6;
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-    }
+    filter:drop-shadow(0 0 20px black);
 
 }
 
 
 
 
+/* Person Sitting Under Tree */
 
-/* River */
-
-
-.river{
+.sitting-person{
 
     position:absolute;
 
+    right:320px;
+
+    bottom:170px;
+
+    font-size:75px;
+
+}
+
+
+
+
+
+/* Pond */
+
+.village-water{
+
+    position:absolute;
 
     bottom:0;
 
-
     width:100%;
 
-
-    height:220px;
+    height:190px;
 
 
     background:
 
-
     linear-gradient(
         to bottom,
-        #164e63,
+        #155e75,
         #082f49
     );
 
@@ -675,7 +446,7 @@ button:hover{
 
     box-shadow:
 
-    0 -10px 40px #67e8f9;
+    0 -10px 40px #38bdf8;
 
 }
 
@@ -683,50 +454,43 @@ button:hover{
 
 
 
-/* Flowers */
+/* 24 Flower Plants */
 
-
-.flowers{
+.flower-field{
 
     position:absolute;
 
-
-    bottom:160px;
-
+    bottom:170px;
 
     width:100%;
 
 
     display:flex;
 
-
     justify-content:center;
-
-
-    gap:12px;
-
 
     flex-wrap:wrap;
 
+    gap:15px;
 
-    padding:0 80px;
-
-}
-
-
-
-.flower{
-
-    font-size:28px;
-
-
-    animation:sway 3s infinite ease-in-out;
+    padding:0 50px;
 
 }
 
 
 
-.flower:nth-child(even){
+
+.plant{
+
+    font-size:35px;
+
+    animation:wind 3s infinite ease-in-out;
+
+}
+
+
+
+.plant:nth-child(even){
 
     animation-delay:.5s;
 
@@ -734,8 +498,8 @@ button:hover{
 
 
 
-@keyframes sway{
 
+@keyframes wind{
 
     0%,100%{
 
@@ -756,47 +520,63 @@ button:hover{
 
 
 
-/* Tree */
+/* Fireflies */
 
-
-.tree{
+.firefly{
 
     position:absolute;
 
+    font-size:25px;
 
-    right:40px;
+    animation:floatLight 4s infinite;
 
-
-    bottom:170px;
-
-
-    font-size:160px;
+}
 
 
-    filter:drop-shadow(0 0 20px black);
+
+.fire1{
+
+    top:40%;
+    left:20%;
+
+}
+
+
+.fire2{
+
+    top:30%;
+    left:70%;
+
+}
+
+
+.fire3{
+
+    top:60%;
+    left:50%;
 
 }
 
 
 
 
-/* Boy */
+@keyframes floatLight{
+
+    0%,100%{
+
+        opacity:.3;
+
+        transform:translateY(0);
+
+    }
 
 
-.boy{
+    50%{
 
-    position:absolute;
+        opacity:1;
 
+        transform:translateY(-40px);
 
-    right:230px;
-
-
-    bottom:180px;
-
-
-    font-size:55px;
-
-
-    filter:drop-shadow(0 0 10px white);
+    }
 
 }
