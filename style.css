@@ -315,3 +315,52 @@ button:hover{
     transform:translateX(-50%) scale(1.1);
 
 }
+.corner-quote{
+
+    position:absolute;
+
+    bottom:40px;
+    left:40px;
+
+    width:280px;
+
+    text-align:left;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    font-style:italic;
+
+    color:#e8f4ff;
+
+    text-shadow:
+    0 0 10px #00bfff,
+    0 0 20px #ffffff;
+
+    opacity:.9;
+
+    animation:quoteGlow 3s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes quoteGlow{
+
+    from{
+
+        text-shadow:
+        0 0 8px #00bfff;
+
+    }
+
+
+    to{
+
+        text-shadow:
+        0 0 20px #ffffff,
+        0 0 35px #0066ff;
+
+    }
+
+}
