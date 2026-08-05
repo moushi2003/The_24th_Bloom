@@ -1,19 +1,22 @@
 // The 24th Bloom
-// Cinematic Auto Journey
+// Automatic Cinematic Journey
 
 const sections = document.querySelectorAll("section");
 
 let current = 0;
 
-// Show first section
+// First scene visible
 sections.forEach((section, index) => {
-    section.style.opacity = index === 0 ? "1" : "0";
-    section.style.transform = "translateY(40px)";
+    if (index === 0) {
+        section.style.opacity = "1";
+        section.style.transform = "translateY(0)";
+    } else {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(40px)";
+    }
 });
 
-
-function showNextSection() {
-
+function nextScene() {
     if (current < sections.length - 1) {
 
         sections[current].style.opacity = "0";
@@ -23,14 +26,8 @@ function showNextSection() {
 
         sections[current].style.opacity = "1";
         sections[current].style.transform = "translateY(0)";
-
     }
-
 }
 
-
-// Automatically move every 5 seconds
-
-setInterval(() => {
-    showNextSection();
-}, 5000);
+// Change scene automatically every 6 seconds
+setInterval(nextScene, 6000);
