@@ -1,4 +1,4 @@
-// Typing Effect
+// ================= Typing Effect =================
 
 const text = "A little universe made only for you... ❤️";
 
@@ -9,7 +9,7 @@ const typingText = document.getElementById("typing");
 
 function typeWriter(){
 
-    if(index < text.length){
+    if(typingText && index < text.length){
 
         typingText.innerHTML += text.charAt(index);
 
@@ -27,46 +27,91 @@ typeWriter();
 
 
 
-// Music Button
+
+// ================= Music Button =================
 
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 
 
-musicBtn.addEventListener("click",()=>{
+if(music && musicBtn){
 
-    music.play();
-
-    musicBtn.innerHTML="🎵 Playing Theme";
-
-});
+    musicBtn.addEventListener("click",()=>{
 
 
+        if(music.paused){
+
+            music.play();
+
+            musicBtn.innerHTML =
+            "⏸ Pause Theme";
+
+        }
+
+        else{
+
+            music.pause();
+
+            musicBtn.innerHTML =
+            "🎵 Play Theme";
+
+        }
 
 
-// Floating light particles
+    });
 
-function createStar(){
+}
+
+
+
+
+
+// ================= Spider Floating Stars =================
+
+
+function createSceneStar(){
+
+
+    const scene =
+    document.querySelector(".scene");
+
+
+    if(!scene) return;
+
+
 
     const star=document.createElement("div");
 
+
     star.innerHTML="✦";
+
 
     star.style.position="absolute";
 
     star.style.color="white";
 
-    star.style.left=Math.random()*100+"vw";
+
+    star.style.left =
+    Math.random()*100+"vw";
+
 
     star.style.top="100vh";
 
-    star.style.opacity=Math.random();
 
-    star.style.fontSize=(10+Math.random()*20)+"px";
+    star.style.opacity =
+    Math.random();
 
-    star.style.transition="8s linear";
 
-    document.querySelector(".scene").appendChild(star);
+    star.style.fontSize =
+    (10+Math.random()*20)+"px";
+
+
+    star.style.transition =
+    "8s linear";
+
+
+    scene.appendChild(star);
+
 
 
     setTimeout(()=>{
@@ -83,36 +128,66 @@ function createStar(){
 
     },8000);
 
+
 }
 
 
-setInterval(createStar,500);
+setInterval(createSceneStar,500);
 
 
-// Extra Twinkling Stars
 
-function createStar(){
 
-    const star = document.createElement("div");
 
-    star.innerHTML = "✦";
 
-    star.style.position = "absolute";
 
-    star.style.color = "white";
+// ================= Garden Twinkle Stars =================
 
-    star.style.left = Math.random()*100 + "vw";
 
-    star.style.top = Math.random()*60 + "vh";
+function createGardenStar(){
 
-    star.style.fontSize = (8 + Math.random()*15) + "px";
 
-    star.style.opacity = Math.random();
+    const garden =
+    document.querySelector(".garden-scene");
 
-    star.style.animation = "blink 2s infinite";
 
-    document.querySelector(".garden-scene")
-    .appendChild(star);
+    if(!garden) return;
+
+
+
+    const star=document.createElement("div");
+
+
+    star.innerHTML="✦";
+
+
+    star.style.position="absolute";
+
+    star.style.color="white";
+
+
+    star.style.left =
+    Math.random()*100+"vw";
+
+
+    star.style.top =
+    Math.random()*60+"vh";
+
+
+    star.style.fontSize =
+    (8+Math.random()*15)+"px";
+
+
+    star.style.opacity =
+    Math.random();
+
+
+    star.style.animation =
+    "blink 2s infinite";
+
+
+
+    garden.appendChild(star);
+
 
 
     setTimeout(()=>{
@@ -121,26 +196,35 @@ function createStar(){
 
     },5000);
 
+
 }
 
 
 
-setInterval(createStar,700);
+setInterval(createGardenStar,700);
 
 
 
 
-// Gentle Wind Feel
 
-const flowers = document.querySelectorAll(".flower");
+
+
+// ================= Flower Movement =================
+
+
+const flowers =
+document.querySelectorAll(".flower");
 
 
 setInterval(()=>{
 
+
     flowers.forEach((flower)=>{
+
 
         flower.style.transform =
         `rotate(${Math.random()*10-5}deg)`;
+
 
     });
 
@@ -150,26 +234,31 @@ setInterval(()=>{
 
 
 
-// Add blink animation
 
-const style = document.createElement("style");
+
+
+// ================= Blink Animation =================
+
+
+const style =
+document.createElement("style");
 
 
 style.innerHTML = `
 
 @keyframes blink{
 
-    0%,100%{
+0%,100%{
 
-        opacity:.3;
+opacity:.3;
 
-    }
+}
 
-    50%{
+50%{
 
-        opacity:1;
+opacity:1;
 
-    }
+}
 
 }
 
