@@ -253,9 +253,10 @@ if(nextBtn){
 
     nextBtn.addEventListener("click",()=>{
 
-
-        alert("Birthday Wish Letter Coming Soon ❤️");
-
+        document.querySelector(".letter-page")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
     });
 
