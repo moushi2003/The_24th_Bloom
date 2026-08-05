@@ -343,3 +343,383 @@ button:hover{
     scale(1.08);
 
 }
+
+/* ================= CAKE PAGE ================= */
+
+
+.cake-page{
+
+    width:100%;
+    height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        #7f1d1d,
+        #1f0a0a 60%,
+        #020617
+    );
+
+}
+
+
+
+/* Curtain */
+
+.curtain{
+
+    position:absolute;
+
+    top:0;
+
+    width:35%;
+    height:100%;
+
+    background:
+
+    repeating-linear-gradient(
+        90deg,
+        #7f1d1d,
+        #dc2626 20px,
+        #450a0a 40px
+    );
+
+    box-shadow:
+    inset 0 0 50px black;
+
+}
+
+
+
+.left-curtain{
+
+    left:0;
+
+    border-radius:0 50% 50% 0;
+
+}
+
+
+.right-curtain{
+
+    right:0;
+
+    border-radius:50% 0 0 50%;
+
+}
+
+
+
+
+
+/* Spotlight */
+
+
+.spotlight{
+
+    position:absolute;
+
+    top:-100px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:500px;
+
+    height:700px;
+
+
+    background:
+
+    radial-gradient(
+        ellipse,
+        rgba(255,255,255,.35),
+        transparent 65%
+    );
+
+
+}
+
+
+
+
+
+/* Balloons */
+
+
+.balloon{
+
+    position:absolute;
+
+    font-size:80px;
+
+    animation:floatBalloon 4s infinite ease-in-out;
+
+}
+
+
+
+.balloon1{
+
+    left:80px;
+    top:100px;
+
+}
+
+
+.balloon2{
+
+    left:180px;
+    top:250px;
+
+}
+
+
+.balloon3{
+
+    right:100px;
+    top:120px;
+
+}
+
+
+.balloon4{
+
+    right:200px;
+    top:260px;
+
+}
+
+
+
+@keyframes floatBalloon{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-25px);
+
+    }
+
+}
+
+
+
+
+
+/* Cake Title */
+
+
+.cake-title{
+
+    position:absolute;
+
+    top:80px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:45px;
+
+    font-weight:bold;
+
+    text-shadow:
+
+    0 0 20px gold;
+
+}
+
+
+
+
+
+/* Cake */
+
+
+.cake{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:150px;
+
+    transform:translateX(-50%);
+
+}
+
+
+
+.layer{
+
+    margin:auto;
+
+    border-radius:20px;
+
+    box-shadow:
+
+    inset 0 -15px 20px rgba(0,0,0,.3),
+
+    0 0 30px rgba(255,215,0,.5);
+
+}
+
+
+
+.top-layer{
+
+    width:220px;
+
+    height:80px;
+
+    background:#fca5a5;
+
+}
+
+
+
+.middle-layer{
+
+    width:280px;
+
+    height:90px;
+
+    background:#fb7185;
+
+}
+
+
+
+.bottom-layer{
+
+    width:340px;
+
+    height:100px;
+
+    background:#be123c;
+
+}
+
+
+
+
+
+/* Candles */
+
+
+.candles{
+
+    position:absolute;
+
+    top:-60px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:4px;
+
+}
+
+
+
+.candle{
+
+    width:6px;
+
+    height:35px;
+
+    background:#fde68a;
+
+    position:relative;
+
+}
+
+
+
+.candle span{
+
+    position:absolute;
+
+    top:-15px;
+
+    left:-4px;
+
+    width:14px;
+
+    height:14px;
+
+    background:orange;
+
+    border-radius:50%;
+
+    box-shadow:
+
+    0 0 15px yellow;
+
+    animation:flame 1s infinite alternate;
+
+}
+
+
+
+@keyframes flame{
+
+    from{
+
+        transform:scale(.8);
+
+    }
+
+    to{
+
+        transform:scale(1.2);
+
+    }
+
+}
+
+
+
+
+/* Buttons */
+
+#blowBtn,
+#nextBtn{
+
+    bottom:50px;
+
+}
+
+
+
+#nextBtn{
+
+    left:65%;
+
+}
+
+
+
+#blowBtn{
+
+    left:35%;
+
+}
