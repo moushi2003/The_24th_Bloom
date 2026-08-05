@@ -175,3 +175,81 @@ h2 {
     margin-bottom: 20px;
 
 }
+
+
+/* 🌌 The 24th Bloom - Cinematic Upgrade */
+
+/* Smooth page feel */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050014;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* ✨ Floating Star Background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image:
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 45px 45px;
+    animation: starsMove 60s linear infinite;
+    opacity: 0.35;
+    z-index: -1;
+}
+
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(300px);
+    }
+}
+
+
+/* 🌙 Section Animation */
+section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+
+/* 🔴🔵 Neon Glow */
+.neon {
+    text-shadow:
+        0 0 10px #ff003c,
+        0 0 20px #0066ff,
+        0 0 40px #ff003c;
+}
+
+
+/* 🎈 Floating Animation */
+.float {
+    animation: floating 4s ease-in-out infinite;
+}
+
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+}
