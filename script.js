@@ -30,6 +30,7 @@ typeWriter();
 
 // ================= Music Button =================
 
+
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 
@@ -43,8 +44,7 @@ if(music && musicBtn){
 
             music.play();
 
-            musicBtn.innerHTML =
-            "⏸ Pause Theme";
+            musicBtn.innerHTML="⏸ Pause Theme";
 
         }
 
@@ -52,8 +52,7 @@ if(music && musicBtn){
 
             music.pause();
 
-            musicBtn.innerHTML =
-            "🎵 Play Theme";
+            musicBtn.innerHTML="🎵 Play Theme";
 
         }
 
@@ -72,12 +71,10 @@ if(music && musicBtn){
 function createSceneStar(){
 
 
-    const scene =
-    document.querySelector(".scene");
+    const scene=document.querySelector(".scene");
 
 
     if(!scene) return;
-
 
 
     const star=document.createElement("div");
@@ -91,23 +88,19 @@ function createSceneStar(){
     star.style.color="white";
 
 
-    star.style.left =
-    Math.random()*100+"vw";
-
+    star.style.left=Math.random()*100+"vw";
 
     star.style.top="100vh";
 
 
-    star.style.opacity =
-    Math.random();
-
-
-    star.style.fontSize =
+    star.style.fontSize=
     (10+Math.random()*20)+"px";
 
 
-    star.style.transition =
-    "8s linear";
+    star.style.opacity=Math.random();
+
+
+    star.style.transition="8s linear";
 
 
     scene.appendChild(star);
@@ -132,6 +125,7 @@ function createSceneStar(){
 }
 
 
+
 setInterval(createSceneStar,500);
 
 
@@ -140,59 +134,44 @@ setInterval(createSceneStar,500);
 
 
 
-// ================= Garden Twinkle Stars =================
+// ================= Village Fireflies =================
 
 
-function createGardenStar(){
+function createFirefly(){
 
 
-    const garden =
-    document.querySelector(".garden-scene");
+    const garden=document.querySelector(".garden-scene");
 
 
     if(!garden) return;
 
 
-
-    const star=document.createElement("div");
-
-
-    star.innerHTML="✦";
+    const light=document.createElement("div");
 
 
-    star.style.position="absolute";
-
-    star.style.color="white";
+    light.innerHTML="✨";
 
 
-    star.style.left =
-    Math.random()*100+"vw";
+    light.style.position="absolute";
+
+    light.style.left=Math.random()*100+"vw";
+
+    light.style.top=Math.random()*70+"vh";
 
 
-    star.style.top =
-    Math.random()*60+"vh";
+    light.style.fontSize="20px";
 
 
-    star.style.fontSize =
-    (8+Math.random()*15)+"px";
+    light.style.animation="blink 2s infinite";
 
 
-    star.style.opacity =
-    Math.random();
-
-
-    star.style.animation =
-    "blink 2s infinite";
-
-
-
-    garden.appendChild(star);
+    garden.appendChild(light);
 
 
 
     setTimeout(()=>{
 
-        star.remove();
+        light.remove();
 
     },5000);
 
@@ -200,29 +179,27 @@ function createGardenStar(){
 }
 
 
-
-setInterval(createGardenStar,700);
-
+setInterval(createFirefly,700);
 
 
 
 
 
 
-// ================= Flower Movement =================
+
+// ================= Plant Movement =================
 
 
-const flowers =
-document.querySelectorAll(".flower");
+const plants=document.querySelectorAll(".plant");
 
 
 setInterval(()=>{
 
 
-    flowers.forEach((flower)=>{
+    plants.forEach((plant)=>{
 
 
-        flower.style.transform =
+        plant.style.transform =
         `rotate(${Math.random()*10-5}deg)`;
 
 
@@ -237,14 +214,14 @@ setInterval(()=>{
 
 
 
+
 // ================= Blink Animation =================
 
 
-const style =
-document.createElement("style");
+const style=document.createElement("style");
 
 
-style.innerHTML = `
+style.innerHTML=`
 
 @keyframes blink{
 
