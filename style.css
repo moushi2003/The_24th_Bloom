@@ -709,3 +709,73 @@ button:hover{
 #nextBtn{
     left:65%;
 }
+
+/* ================= LETTER PAGE ================= */
+
+.letter-page{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    background:
+    radial-gradient(circle at top,#1e293b,#020617);
+
+    padding:50px 20px;
+
+}
+
+
+
+.letter-card{
+
+    width:80%;
+    max-width:800px;
+
+    background:#fff7ed;
+
+    padding:50px;
+
+    border-radius:20px;
+
+    color:#1f2937;
+
+    box-shadow:
+    0 0 40px rgba(255,215,0,.35);
+
+    border:2px solid #fbbf24;
+
+}
+
+
+
+.letter-card h1{
+
+    text-align:center;
+
+    font-size:38px;
+
+    color:#92400e;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.letter-text{
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    white-space:pre-line;
+
+}
