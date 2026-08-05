@@ -5,8 +5,9 @@
 }
 
 body{
-    height:100vh;
-    overflow:hidden;
+    min-height:300vh;
+    overflow-x:hidden;
+    overflow-y:auto;
     background:#020617;
     font-family:'Poppins',sans-serif;
     color:white;
@@ -703,23 +704,14 @@ button:hover{
 
 #blowBtn,
 #nextBtn{
-
+    position:absolute;
     bottom:50px;
-
 }
-
-
-
-#nextBtn{
-
-    left:65%;
-
-}
-
-
 
 #blowBtn{
-
     left:35%;
+}
 
+#nextBtn{
+    left:65%;
 }
