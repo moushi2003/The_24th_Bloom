@@ -1,38 +1,36 @@
 // The 24th Bloom
-// Main JavaScript File
-
-// Start Button Effect
-
-const startBtn = document.getElementById("startBtn");
-
-if (startBtn) {
-    startBtn.addEventListener("click", function () {
-
-        document.querySelector(".birthday")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-    });
-}
-
-
-// Simple fade effect while scrolling
+// Cinematic Auto Journey
 
 const sections = document.querySelectorAll("section");
 
-window.addEventListener("scroll", () => {
+let current = 0;
 
-    sections.forEach(section => {
-
-        const position = section.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (position < screenHeight - 100) {
-            section.style.opacity = "1";
-            section.style.transform = "translateY(0)";
-        }
-
-    });
-
+// Show first section
+sections.forEach((section, index) => {
+    section.style.opacity = index === 0 ? "1" : "0";
+    section.style.transform = "translateY(40px)";
 });
+
+
+function showNextSection() {
+
+    if (current < sections.length - 1) {
+
+        sections[current].style.opacity = "0";
+        sections[current].style.transform = "translateY(-40px)";
+
+        current++;
+
+        sections[current].style.opacity = "1";
+        sections[current].style.transform = "translateY(0)";
+
+    }
+
+}
+
+
+// Automatically move every 5 seconds
+
+setInterval(() => {
+    showNextSection();
+}, 5000);
