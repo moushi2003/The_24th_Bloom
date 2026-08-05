@@ -625,17 +625,11 @@ button:hover{
 
     position:absolute;
 
-    top:-60px;
+    top:-5px;
 
-    width:100%;
+    left:50%;
 
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:4px;
+    transform:translateX(-50%);
 
 }
 
@@ -643,9 +637,9 @@ button:hover{
 
 .candle{
 
-    width:6px;
+    width:10px;
 
-    height:35px;
+    height:45px;
 
     background:#fde68a;
 
