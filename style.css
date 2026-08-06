@@ -1122,3 +1122,259 @@ button:hover{
     right:25px;
 
 }
+
+/* ================= ROSE BLOOMING PAGE ================= */
+
+.rose-page{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle at center,#3b1118,#120609);
+
+    overflow:hidden;
+
+}
+
+
+.rose-scene{
+
+    text-align:center;
+
+    position:relative;
+
+}
+
+
+
+.rose-scene h1{
+
+    color:#f5d7d7;
+
+    font-family:"Segoe Print",cursive;
+
+    font-size:28px;
+
+    margin-bottom:60px;
+
+    opacity:0;
+
+    animation:fadeText 3s forwards;
+
+}
+
+
+
+.rose{
+
+    position:relative;
+
+    width:120px;
+
+    height:220px;
+
+    margin:auto;
+
+    animation:bloomRose 4s ease forwards;
+
+}
+
+
+/* Rose petals */
+
+.petal{
+
+    position:absolute;
+
+    width:70px;
+
+    height:70px;
+
+    background:#8b0000;
+
+    border-radius:50% 50% 45% 45%;
+
+    left:25px;
+
+    top:20px;
+
+    transform-origin:bottom center;
+
+    opacity:0;
+
+}
+
+
+
+.petal1{
+
+    transform:rotate(-35deg);
+
+    animation:petalOpen 2s 1s forwards;
+
+}
+
+
+
+.petal2{
+
+    transform:rotate(35deg);
+
+    animation:petalOpen 2s 1.5s forwards;
+
+}
+
+
+
+.petal3{
+
+    background:#b30000;
+
+    transform:scale(.8);
+
+    animation:petalOpen 2s 2s forwards;
+
+}
+
+
+
+.rose-center{
+
+    position:absolute;
+
+    width:35px;
+
+    height:35px;
+
+    background:#650000;
+
+    border-radius:50%;
+
+    left:42px;
+
+    top:45px;
+
+    z-index:3;
+
+}
+
+
+
+/* Stem */
+
+.stem{
+
+    position:absolute;
+
+    width:8px;
+
+    height:120px;
+
+    background:#285c25;
+
+    left:56px;
+
+    top:85px;
+
+    border-radius:10px;
+
+}
+
+
+/* Leaves */
+
+.leaf{
+
+    position:absolute;
+
+    width:45px;
+
+    height:25px;
+
+    background:#357a38;
+
+    border-radius:50%;
+
+}
+
+
+
+.leaf1{
+
+    left:10px;
+
+    top:140px;
+
+    transform:rotate(-35deg);
+
+}
+
+
+
+.leaf2{
+
+    right:5px;
+
+    top:165px;
+
+    transform:rotate(35deg);
+
+}
+
+
+
+/* Animations */
+
+@keyframes petalOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(0);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+@keyframes fadeText{
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+@keyframes bloomRose{
+
+    from{
+
+        transform:scale(.5);
+
+    }
+
+
+    to{
+
+        transform:scale(1);
+
+    }
+
+}
