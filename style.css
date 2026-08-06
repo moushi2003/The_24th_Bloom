@@ -851,3 +851,154 @@ button:hover{
     }
 
 }
+
+/* ================= FRIENDSHIP LETTER DESIGN ================= */
+
+.friend-letter-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+    background:#f4d9a6;
+}
+
+
+.friend-letter-paper{
+
+    width:90%;
+    max-width:720px;
+    min-height:700px;
+
+    background:#f8e7a9;
+
+    position:relative;
+
+    padding:45px 40px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.25);
+
+    overflow:hidden;
+}
+
+
+/* Paper texture + soft fold */
+
+.friend-letter-paper::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:100px;
+    height:100px;
+
+    background:#e2c47a;
+
+    clip-path:polygon(100% 0,100% 100%,0 0);
+
+}
+
+
+.friend-letter-paper::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:80px;
+    height:80px;
+
+    background:#d5b566;
+
+    clip-path:polygon(0 100%,100% 100%,0 0);
+
+}
+
+
+
+/* Letter Text */
+
+.friend-letter-text{
+
+    position:relative;
+
+    z-index:2;
+
+    color:#6b3f20;
+
+    font-family:
+    "Segoe Print",
+    "Bradley Hand",
+    cursive;
+
+    font-size:15px;
+
+    line-height:1.65;
+
+    text-align:left;
+
+}
+
+
+.friend-letter-text h1{
+
+    text-align:center;
+
+    color:#7a321f;
+
+    font-size:28px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+
+/* Bow */
+
+.pookie-bow{
+
+    position:absolute;
+
+    font-size:45px;
+
+    z-index:5;
+
+}
+
+
+
+/* Top Left Bow */
+
+.top-bow{
+
+    top:15px;
+
+    left:15px;
+
+}
+
+
+
+/* Bottom Right Bow */
+
+.bottom-bow{
+
+    bottom:15px;
+
+    right:15px;
+
+    transform:rotate(180deg);
+
+}
