@@ -142,31 +142,69 @@
     </section>
 
     <!-- ================= ROSE BLOOMING PAGE ================= -->
-    <section class="rose-page">
-        <div class="rose-scene">
-            <h1>Before You Read My Heart... 🌹</h1>
+<section class="rose-page">
+    <div class="rose-scene">
+        <h1 class="rose-title">Before You Read My Heart... 🌹</h1>
 
-            <!-- Flower Plant -->
-            <div class="plant">
-                <div class="stem"></div>
-                <div class="leaf leaf-left"></div>
-                <div class="leaf leaf-right"></div>
-                <div class="flower">
-                    <div class="petal petal1"></div>
-                    <div class="petal petal2"></div>
-                    <div class="petal petal3"></div>
-                    <div class="rose-center"></div>
-                </div>
-            </div>
+        <!-- Realistic Flower Animation (SVG) -->
+        <div class="flower-container">
+            <svg class="rose-svg" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG Gradient Definitions -->
+                <defs>
+                    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#1b4317"/>
+                        <stop offset="50%" stop-color="#38761d"/>
+                        <stop offset="100%" stop-color="#112d0e"/>
+                    </linearGradient>
 
-            <!-- Butterfly -->
-            <div class="butterfly">🦋</div>
+                    <linearGradient id="petalGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ff2e55"/>
+                        <stop offset="50%" stop-color="#d90429"/>
+                        <stop offset="100%" stop-color="#6a040f"/>
+                    </linearGradient>
 
-            <!-- Flying Bird -->
-            <div class="bird">🕊️</div>
+                    <linearGradient id="petalGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ef233c"/>
+                        <stop offset="100%" stop-color="#370617"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Stem -->
+                <path class="rose-stem" d="M 150,420 Q 140,300 150,200 Q 158,150 150,110" fill="none" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round"/>
+
+                <!-- Leaves -->
+                <g class="rose-leaf left-leaf">
+                    <path d="M 148,260 Q 90,230 70,250 Q 100,285 148,265" fill="#2d6a4f" stroke="#1b4317" stroke-width="1.5"/>
+                    <path d="M 148,262 Q 105,250 78,252" stroke="#52b788" stroke-width="1" fill="none"/>
+                </g>
+                <g class="rose-leaf right-leaf">
+                    <path d="M 152,210 Q 210,180 230,200 Q 200,235 152,215" fill="#2d6a4f" stroke="#1b4317" stroke-width="1.5"/>
+                    <path d="M 152,212 Q 195,198 222,202" stroke="#52b788" stroke-width="1" fill="none"/>
+                </g>
+
+                <!-- Realistic Rose Petals -->
+                <g class="rose-bloom">
+                    <!-- Outer Petals -->
+                    <path class="petal p1" d="M 150,115 Q 80,80 95,35 Q 150,60 150,115" fill="url(#petalGrad1)"/>
+                    <path class="petal p2" d="M 150,115 Q 220,80 205,35 Q 150,60 150,115" fill="url(#petalGrad1)"/>
+                    
+                    <!-- Middle Petals -->
+                    <path class="petal p3" d="M 150,115 Q 100,30 150,20 Q 200,30 150,115" fill="url(#petalGrad2)"/>
+                    <path class="petal p4" d="M 150,110 Q 115,45 150,35 Q 185,45 150,110" fill="url(#petalGrad1)"/>
+                    
+                    <!-- Center Core -->
+                    <path class="petal p5" d="M 150,105 Q 132,55 150,50 Q 168,55 150,105" fill="#5c0011"/>
+                </g>
+            </svg>
         </div>
-    </section>
 
+        <!-- Flying Bird -->
+        <div class="flying-bird">🕊️</div>
+
+        <!-- Butterfly landing on flower -->
+        <div class="landing-butterfly">🦋</div>
+    </div>
+</section>
     <script src="script.js"></script>
 </body>
 
