@@ -563,7 +563,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 40px 0;
     position: relative;
 }
@@ -571,6 +571,8 @@ button:hover{
 /* Title Styling */
 .rose-title {
     color: #ffe4e6;
+    position:absolute;
+    top:50px;
     font-family: "Segoe Print", cursive, sans-serif;
     font-size: 26px;
     text-shadow: 0 0 12px rgba(255, 77, 109, 0.5);
@@ -698,22 +700,25 @@ button:hover{
 }
 
 @keyframes butterflyFlyAndLand {
+
     0% {
-        opacity: 0;
-        transform: translate(0, 0) scale(0.5) rotate(-20deg);
+        opacity:0;
+        transform:translate(0,0) scale(.5) rotate(-20deg);
     }
+
     40% {
-        opacity: 1;
-        transform: translate(-100px, 80px) scale(1.1) rotate(10deg);
+        opacity:1;
+        transform:translate(-80px,60px) scale(1.1);
     }
+
     80% {
-        opacity: 1;
-        transform: translate(-170px, 140px) scale(1) rotate(-5deg);
+        opacity:1;
+        transform:translate(-120px,100px) scale(1);
     }
+
     100% {
-        opacity: 1;
-        /* Sits right on top of the rose bud */
-        transform: translate(-152px, 168px) scale(0.9) rotate(0deg);
+        opacity:1;
+        transform:translate(-120px,90px) scale(.85);
     }
 }
 
