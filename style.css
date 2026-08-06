@@ -1002,3 +1002,30 @@ button:hover{
     transform:rotate(180deg);
 
 }
+
+.friend-letter-page{
+    min-height:100vh !important;
+    background:#f4d9a6 !important;
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    padding:50px 20px !important;
+}
+
+
+.friend-letter-paper{
+    background:#f8e7a9 !important;
+    width:90% !important;
+    max-width:720px !important;
+    padding:45px 40px !important;
+    border-radius:10px !important;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25) !important;
+}
+
+
+.friend-letter-text{
+    color:#6b3f20 !important;
+    font-family:"Segoe Print","Bradley Hand",cursive !important;
+    font-size:15px !important;
+    line-height:1.65 !important;
+}
