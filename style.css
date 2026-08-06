@@ -551,38 +551,58 @@ button:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #2b0910, #0a0204);
+    background: radial-gradient(circle at center, #1f050a, #050102);
     position: relative;
     overflow: hidden;
 }
 
 .rose-scene {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 40px 0;
     position: relative;
 }
 
+/* Title Styling */
 .rose-title {
-    color: #fce7f3;
-    font-family: "Segoe Print", cursive;
-    font-size: 28px;
-    position: absolute;
-    top: 50px;
-    text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+    color: #ffe4e6;
+    font-family: "Segoe Print", cursive, sans-serif;
+    font-size: 26px;
+    text-shadow: 0 0 12px rgba(255, 77, 109, 0.5);
+    z-index: 5;
+    margin-top: 10px;
     opacity: 0;
-    animation: fadeInText 2s 0.5s forwards;
+    animation: fadeInTitle 2s 0.5s forwards;
 }
 
+/* Sky Area for Bird (Controlled Floating Zone) */
+.sky-area {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+    height: 100px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.flying-bird {
+    position: absolute;
+    font-size: 32px;
+    left: -60px;
+    animation: flyInSky 10s infinite linear;
+}
+
+/* Flower Container */
 .flower-container {
     width: 320px;
-    height: 440px;
+    height: 450px;
     position: relative;
-    margin-top: 40px;
+    z-index: 4;
 }
 
 .rose-svg {
@@ -590,64 +610,49 @@ button:hover{
     height: 100%;
 }
 
-/* 1. Stem Growth Animation */
+/* 1. Stem Growth */
 .rose-stem {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
     animation: growStem 3s ease-in-out forwards;
 }
 
-/* 2. Leaves Unfolding Animation */
+/* 2. Leaves Unfolding */
 .rose-leaf {
     opacity: 0;
-    transform-origin: center;
+    transform-origin: 150px 250px;
 }
 
-.left-leaf {
-    animation: unfoldLeaf 1.5s 2s forwards;
-}
+.left-leaf { animation: unfoldLeaf 1.2s 2.2s forwards; }
+.right-leaf { animation: unfoldLeaf 1.2s 2.5s forwards; }
 
-.right-leaf {
-    animation: unfoldLeaf 1.5s 2.3s forwards;
-}
-
-/* 3. Rose Blooming Animation */
+/* 3. Rose Bloom Sequence */
 .petal {
     opacity: 0;
-    transform-origin: 150px 115px;
+    transform-origin: 150px 120px;
 }
 
-.p1 { animation: bloomPetal 1.5s 3.0s forwards; }
-.p2 { animation: bloomPetal 1.5s 3.2s forwards; }
-.p3 { animation: bloomPetal 1.5s 3.5s forwards; }
-.p4 { animation: bloomPetal 1.5s 3.8s forwards; }
-.p5 { animation: bloomPetal 1.2s 4.0s forwards; }
+.p1 { animation: bloomPetal 1.4s 3.0s forwards; }
+.p2 { animation: bloomPetal 1.4s 3.2s forwards; }
+.p3 { animation: bloomPetal 1.4s 3.5s forwards; }
+.p4 { animation: bloomPetal 1.4s 3.8s forwards; }
+.p5 { animation: bloomPetal 1.2s 4.1s forwards; }
 
-/* 4. Butterfly Flying and Landing directly on the Rose */
+/* 4. Butterfly Landing */
 .landing-butterfly {
     position: absolute;
-    font-size: 32px;
-    top: -50px;
-    right: -50px;
+    font-size: 30px;
+    top: -40px;
+    right: -40px;
     z-index: 10;
     opacity: 0;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
-    animation: flyAndLand 5s 4.8s forwards;
-}
-
-/* 5. Bird Flying across the sky continuously */
-.flying-bird {
-    position: absolute;
-    font-size: 36px;
-    top: 15%;
-    left: -80px;
-    z-index: 2;
-    animation: flyAcross 12s infinite linear;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+    animation: butterflyFlyAndLand 4.5s 4.8s forwards;
 }
 
 /* ================= KEYFRAMES ================= */
 
-@keyframes fadeInText {
+@keyframes fadeInTitle {
     to { opacity: 1; }
 }
 
@@ -658,7 +663,7 @@ button:hover{
 @keyframes unfoldLeaf {
     0% {
         opacity: 0;
-        transform: scale(0) rotate(-20deg);
+        transform: scale(0) rotate(-15deg);
     }
     100% {
         opacity: 1;
@@ -669,10 +674,7 @@ button:hover{
 @keyframes bloomPetal {
     0% {
         opacity: 0;
-        transform: scale(0.2) rotate(-10deg);
-    }
-    60% {
-        opacity: 1;
+        transform: scale(0.1) rotate(-10deg);
     }
     100% {
         opacity: 1;
@@ -680,37 +682,40 @@ button:hover{
     }
 }
 
-@keyframes flyAndLand {
+@keyframes flyInSky {
     0% {
-        opacity: 0;
-        transform: translate(0, 0) scale(0.6) rotate(-15deg);
+        transform: translate(0, 0);
     }
-    30% {
-        opacity: 1;
-        transform: translate(-120px, 100px) scale(1.2) rotate(10deg);
+    50% {
+        transform: translate(calc(100vw + 60px), -20px);
     }
-    70% {
-        opacity: 1;
-        transform: translate(-190px, 180px) scale(1) rotate(-5deg);
+    50.1% {
+        transform: translate(calc(100vw + 60px), 30px) scaleX(-1);
     }
     100% {
-        opacity: 1;
-        /* Lands perfectly on top of the rose bloom */
-        transform: translate(-170px, 205px) scale(0.9) rotate(0deg);
+        transform: translate(-60px, 0px) scaleX(-1);
     }
 }
 
-@keyframes flyAcross {
+@keyframes butterflyFlyAndLand {
     0% {
-        transform: translate(0, 0) scale(0.8);
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5) rotate(-20deg);
     }
-    50% {
-        transform: translate(calc(100vw + 100px), -40px) scale(1.1);
+    40% {
+        opacity: 1;
+        transform: translate(-100px, 80px) scale(1.1) rotate(10deg);
     }
-    50.1% {
-        transform: translate(calc(100vw + 100px), 80px) scaleX(-1);
+    80% {
+        opacity: 1;
+        transform: translate(-170px, 140px) scale(1) rotate(-5deg);
     }
     100% {
-        transform: translate(-100px, 20px) scaleX(-1);
+        opacity: 1;
+        /* Sits right on top of the rose bud */
+        transform: translate(-152px, 168px) scale(0.9) rotate(0deg);
     }
 }
+
+
+
