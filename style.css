@@ -544,170 +544,173 @@ button:hover{
     transform:rotate(180deg);
 }
 
-/* ================= ROSE BLOOMING PAGE ================= */
+/* ================= REALISTIC ROSE BLOOMING PAGE ================= */
 
-.rose-page{
+.rose-page {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #3b1118, #120609);
+    background: radial-gradient(circle at center, #2b0910, #0a0204);
+    position: relative;
     overflow: hidden;
 }
 
-.rose-scene{
-    text-align: center;
+.rose-scene {
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
-.rose-scene h1{
-    color: #f5d7d7;
+.rose-title {
+    color: #fce7f3;
     font-family: "Segoe Print", cursive;
     font-size: 28px;
-    margin-bottom: 60px;
+    position: absolute;
+    top: 50px;
+    text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
     opacity: 0;
-    animation: fadeText 3s forwards;
+    animation: fadeInText 2s 0.5s forwards;
 }
 
-/* Plant & Rose Container */
-.plant{
+.flower-container {
+    width: 320px;
+    height: 440px;
     position: relative;
-    width: 120px;
-    height: 220px;
-    margin: auto;
-    animation: bloomRose 4s ease forwards;
+    margin-top: 40px;
 }
 
-.flower{
-    position:absolute;
-    top:20px;
-    left:0;
-    width:100%;
-    height:100px;
-
+.rose-svg {
+    width: 100%;
+    height: 100%;
 }
 
-/* Rose Petals */
-.petal{
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: #8b0000;
-    border-radius: 50% 50% 45% 45%;
-    left: 25px;
-    top: 20px;
-    transform-origin: bottom center;
+/* 1. Stem Growth Animation */
+.rose-stem {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: growStem 3s ease-in-out forwards;
+}
+
+/* 2. Leaves Unfolding Animation */
+.rose-leaf {
     opacity: 0;
+    transform-origin: center;
 }
 
-.petal1{
-    transform: rotate(-35deg);
-    animation: petalOpen 2s 1s forwards;
+.left-leaf {
+    animation: unfoldLeaf 1.5s 2s forwards;
 }
 
-.petal2{
-    transform: rotate(35deg);
-    animation: petalOpen 2s 1.5s forwards;
+.right-leaf {
+    animation: unfoldLeaf 1.5s 2.3s forwards;
 }
 
-.petal3{
-    background: #b30000;
-    transform: scale(.8);
-    animation: petalOpen 2s 2s forwards;
+/* 3. Rose Blooming Animation */
+.petal {
+    opacity: 0;
+    transform-origin: 150px 115px;
 }
 
-.rose-center{
+.p1 { animation: bloomPetal 1.5s 3.0s forwards; }
+.p2 { animation: bloomPetal 1.5s 3.2s forwards; }
+.p3 { animation: bloomPetal 1.5s 3.5s forwards; }
+.p4 { animation: bloomPetal 1.5s 3.8s forwards; }
+.p5 { animation: bloomPetal 1.2s 4.0s forwards; }
+
+/* 4. Butterfly Flying and Landing directly on the Rose */
+.landing-butterfly {
     position: absolute;
-    width: 35px;
-    height: 35px;
-    background: #650000;
-    border-radius: 50%;
-    left: 42px;
-    top: 45px;
-    z-index: 3;
-}
-
-/* Stem & Leaves */
-.stem{
-    position: absolute;
-    width: 8px;
-    height: 120px;
-    background: #285c25;
-    left: 56px;
-    top: 85px;
-    border-radius: 10px;
-}
-
-.leaf{
-    position: absolute;
-    width: 45px;
-    height: 25px;
-    background: #357a38;
-    border-radius: 50%;
-}
-
-.leaf-left{
-    left: 10px;
-    top: 130px;
-    transform: rotate(-35deg);
-}
-
-.leaf-right{
-    right: 10px;
-    top: 150px;
-    transform: rotate(35deg);
-}
-
-/* Butterfly & Bird Animations */
-.butterfly{
-    position: absolute;
-    top: 20%;
+    font-size: 32px;
+    top: -50px;
     right: -50px;
-    font-size: 30px;
-    animation: flyButterfly 8s infinite linear;
+    z-index: 10;
+    opacity: 0;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    animation: flyAndLand 5s 4.8s forwards;
 }
 
-.bird{
+/* 5. Bird Flying across the sky continuously */
+.flying-bird {
     position: absolute;
-    top: 10%;
-    left: -60px;
-    font-size: 35px;
-    animation: flyBird 10s infinite linear;
+    font-size: 36px;
+    top: 15%;
+    left: -80px;
+    z-index: 2;
+    animation: flyAcross 12s infinite linear;
 }
 
-/* Keyframes */
-@keyframes petalOpen{
-    from{
+/* ================= KEYFRAMES ================= */
+
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+
+@keyframes growStem {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes unfoldLeaf {
+    0% {
         opacity: 0;
-        transform: scale(0);
+        transform: scale(0) rotate(-20deg);
     }
-    to{
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes bloomPetal {
+    0% {
+        opacity: 0;
+        transform: scale(0.2) rotate(-10deg);
+    }
+    60% {
         opacity: 1;
     }
-}
-
-@keyframes fadeText{
-    to{
+    100% {
         opacity: 1;
+        transform: scale(1) rotate(0deg);
     }
 }
 
-@keyframes bloomRose{
-    from{
-        transform: scale(.5);
+@keyframes flyAndLand {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.6) rotate(-15deg);
     }
-    to{
-        transform: scale(1);
+    30% {
+        opacity: 1;
+        transform: translate(-120px, 100px) scale(1.2) rotate(10deg);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-190px, 180px) scale(1) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        /* Lands perfectly on top of the rose bloom */
+        transform: translate(-170px, 205px) scale(0.9) rotate(0deg);
     }
 }
 
-@keyframes flyButterfly{
-    0%{ transform: translate(0, 0) rotate(0deg); }
-    50%{ transform: translate(-120px, -50px) rotate(-15deg); }
-    100%{ transform: translate(-250px, 20px) rotate(10deg); }
-}
-
-@keyframes flyBird{
-    0%{ transform: translate(0, 0); }
-    100%{ transform: translate(400px, -80px); }
+@keyframes flyAcross {
+    0% {
+        transform: translate(0, 0) scale(0.8);
+    }
+    50% {
+        transform: translate(calc(100vw + 100px), -40px) scale(1.1);
+    }
+    50.1% {
+        transform: translate(calc(100vw + 100px), 80px) scaleX(-1);
+    }
+    100% {
+        transform: translate(-100px, 20px) scaleX(-1);
+    }
 }
