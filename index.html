@@ -228,34 +228,8 @@
     </section>
 
     <!-- JavaScript Files & Inline Scripts -->
-    <script>
-        function openLetter() {
-            const envelope = document.getElementById('envelopeContainer');
-            const letterStage = document.getElementById('letterStage');
+   
             
-            envelope.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            envelope.style.opacity = '0';
-            envelope.style.transform = 'scale(0.8)';
-            
-            setTimeout(() => {
-                envelope.style.display = 'none';
-                letterStage.classList.add('active');
-            }, 800);
-        }
-
-        function spawnHearts(e) {
-            for(let i = 0; i < 8; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart-particle';
-                heart.innerHTML = ['💋', '💖', '🤍', '✨'][Math.floor(Math.random()*4)];
-                heart.style.left = (e.clientX + (Math.random() * 60 - 30)) + 'px';
-                heart.style.top = (e.clientY + (Math.random() * 60 - 30)) + 'px';
-                document.body.appendChild(heart);
-                
-                setTimeout(() => heart.remove(), 4000);
-            }
-        }
-    </script>
     <script src="script.js"></script>
 </body>
 
