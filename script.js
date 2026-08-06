@@ -261,3 +261,95 @@ if(nextBtn){
     });
 
 }
+
+/* ================= UNSPOKEN TRUTH & LETTER INTERACTION ================= */
+
+// Function to open the envelope
+function openLetter() {
+    const envelope = document.getElementById('envelopeContainer');
+    const letterStage = document.getElementById('letterStage');
+
+    if (envelope && letterStage) {
+        // Smoothly fade out envelope
+        envelope.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        envelope.style.opacity = '0';
+        envelope.style.transform = 'scale(0.8)';
+
+        setTimeout(() => {
+            envelope.style.display = 'none';
+            letterStage.classList.add('active');
+
+            // Smooth scroll into letter view
+            letterStage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 800);
+    }
+}
+
+// Function to spawn floating heart particles
+function spawnHearts(event) {
+    const icons = ['💋', '💖', '🤍', '✨'];
+
+    for (let i = 0; i < 8; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-particle';
+
+        // Select random icon
+        heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+
+        // Calculate offset position from click
+        const offsetX = (Math.random() - 0.5) * 60;
+        const offsetY = (Math.random() - 0.5) * 60;
+
+        heart.style.left = `${event.clientX + offsetX}px`;
+        heart.style.top = `${event.clientY + offsetY}px`;
+
+        document.body.appendChild(heart);
+
+        // Remove element after animation completes
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+
+/* ================= SPIDER & CAKE PAGE LOGIC ================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Music Button Control
+    const musicBtn = document.getElementById('musicBtn');
+    const music = document.getElementById('music');
+
+    if (musicBtn && music) {
+        musicBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicBtn.innerText = '⏸️ Pause Theme';
+            } else {
+                music.pause();
+                musicBtn.innerText = '🎵 Play Theme';
+            }
+        });
+    }
+
+    // Cake Candle Blow Control
+    const blowBtn = document.getElementById('blowBtn');
+    const candleSpan = document.querySelector('.candle span');
+
+    if (blowBtn && candleSpan) {
+        blowBtn.addEventListener('click', () => {
+            candleSpan.style.display = 'none';
+            blowBtn.innerText = '✨ Wish Made!';
+            blowBtn.disabled = true;
+        });
+    }
+
+    // Navigation Next Button Control
+    const nextBtn = document.getElementById('nextBtn');
+    const letterPage = document.querySelector('.letter-page');
+
+    if (nextBtn && letterPage) {
+        nextBtn.addEventListener('click', () => {
+            letterPage.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
