@@ -1029,3 +1029,96 @@ button:hover{
     font-size:15px !important;
     line-height:1.65 !important;
 }
+
+/* ================= MAROON RIBBON BOW ================= */
+
+.pookie-bow{
+    position:absolute;
+    width:70px;
+    height:45px;
+    z-index:10;
+}
+
+
+/* two loops */
+
+.pookie-bow::before,
+.pookie-bow::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:32px;
+    height:38px;
+
+    background:#800020;
+
+    top:0;
+
+    border-radius:50% 50% 50% 10%;
+
+}
+
+
+/* left loop */
+
+.pookie-bow::before{
+    left:0;
+    transform:rotate(-35deg);
+}
+
+
+/* right loop */
+
+.pookie-bow::after{
+    right:0;
+    transform:rotate(35deg) scaleX(-1);
+}
+
+
+
+/* middle knot */
+
+.top-bow,
+.bottom-bow{
+
+    background:#800020;
+
+    border-radius:50%;
+
+}
+
+
+.top-bow::marker,
+.bottom-bow::marker{
+    display:none;
+}
+
+
+
+/* ribbon tails */
+
+.top-bow span,
+.bottom-bow span{
+    display:block;
+}
+
+
+
+/* position */
+
+.top-bow{
+
+    top:20px;
+    left:25px;
+
+}
+
+
+.bottom-bow{
+
+    bottom:25px;
+    right:25px;
+
+}
