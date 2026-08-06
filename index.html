@@ -141,69 +141,82 @@
         </div>
     </section>
 
-    <!-- ================= ROSE BLOOMING PAGE ================= -->
+   <!-- ================= ROSE BLOOMING PAGE ================= -->
 <section class="rose-page">
     <div class="rose-scene">
+        
+        <!-- Header Text -->
         <h1 class="rose-title">Before You Read My Heart... 🌹</h1>
 
-        <!-- Realistic Flower Animation (SVG) -->
+        <!-- Sky Element (Flying Bird) -->
+        <div class="sky-area">
+            <div class="flying-bird">🕊️</div>
+        </div>
+
+        <!-- Realistic Flower Area -->
         <div class="flower-container">
-            <svg class="rose-svg" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG Gradient Definitions -->
+            <svg class="rose-svg" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
                 <defs>
+                    <!-- Stem Gradient -->
                     <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#1b4317"/>
-                        <stop offset="50%" stop-color="#38761d"/>
-                        <stop offset="100%" stop-color="#112d0e"/>
+                        <stop offset="0%" stop-color="#14360d"/>
+                        <stop offset="50%" stop-color="#2a5d1e"/>
+                        <stop offset="100%" stop-color="#0f290a"/>
                     </linearGradient>
 
-                    <linearGradient id="petalGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#ff2e55"/>
-                        <stop offset="50%" stop-color="#d90429"/>
-                        <stop offset="100%" stop-color="#6a040f"/>
-                    </linearGradient>
+                    <!-- Real Red Rose Petal Gradients -->
+                    <radialGradient id="petalCore" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#ff0033"/>
+                        <stop offset="70%" stop-color="#b7001d"/>
+                        <stop offset="100%" stop-color="#59000a"/>
+                    </radialGradient>
 
-                    <linearGradient id="petalGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#ef233c"/>
-                        <stop offset="100%" stop-color="#370617"/>
+                    <linearGradient id="outerPetal" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ff1a40"/>
+                        <stop offset="60%" stop-color="#c90022"/>
+                        <stop offset="100%" stop-color="#4a0008"/>
                     </linearGradient>
                 </defs>
 
-                <!-- Stem -->
-                <path class="rose-stem" d="M 150,420 Q 140,300 150,200 Q 158,150 150,110" fill="none" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round"/>
+                <!-- Growing Stem -->
+                <path class="rose-stem" d="M 150,450 Q 140,320 150,220 Q 158,160 150,120" fill="none" stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round"/>
 
-                <!-- Leaves -->
+                <!-- Leaf 1 (Left) -->
                 <g class="rose-leaf left-leaf">
-                    <path d="M 148,260 Q 90,230 70,250 Q 100,285 148,265" fill="#2d6a4f" stroke="#1b4317" stroke-width="1.5"/>
-                    <path d="M 148,262 Q 105,250 78,252" stroke="#52b788" stroke-width="1" fill="none"/>
-                </g>
-                <g class="rose-leaf right-leaf">
-                    <path d="M 152,210 Q 210,180 230,200 Q 200,235 152,215" fill="#2d6a4f" stroke="#1b4317" stroke-width="1.5"/>
-                    <path d="M 152,212 Q 195,198 222,202" stroke="#52b788" stroke-width="1" fill="none"/>
+                    <path d="M 148,280 Q 80,250 60,270 Q 95,310 148,285" fill="#1e4d2b" stroke="#0f290a" stroke-width="1.5"/>
+                    <path d="M 148,282 Q 100,268 70,271" stroke="#40916c" stroke-width="1" fill="none"/>
                 </g>
 
-                <!-- Realistic Rose Petals -->
+                <!-- Leaf 2 (Right) -->
+                <g class="rose-leaf right-leaf">
+                    <path d="M 152,220 Q 220,190 240,210 Q 205,250 152,225" fill="#1e4d2b" stroke="#0f290a" stroke-width="1.5"/>
+                    <path d="M 152,222 Q 200,208 230,211" stroke="#40916c" stroke-width="1" fill="none"/>
+                </g>
+
+                <!-- Blooming Real Red Rose -->
                 <g class="rose-bloom">
-                    <!-- Outer Petals -->
-                    <path class="petal p1" d="M 150,115 Q 80,80 95,35 Q 150,60 150,115" fill="url(#petalGrad1)"/>
-                    <path class="petal p2" d="M 150,115 Q 220,80 205,35 Q 150,60 150,115" fill="url(#petalGrad1)"/>
+                    <!-- Base Sepal -->
+                    <path class="sepal" d="M 135,125 Q 150,140 165,125 Q 150,110 135,125" fill="#2a5d1e"/>
                     
-                    <!-- Middle Petals -->
-                    <path class="petal p3" d="M 150,115 Q 100,30 150,20 Q 200,30 150,115" fill="url(#petalGrad2)"/>
-                    <path class="petal p4" d="M 150,110 Q 115,45 150,35 Q 185,45 150,110" fill="url(#petalGrad1)"/>
+                    <!-- Outer Petals Layer 1 -->
+                    <path class="petal p1" d="M 150,120 Q 70,80 85,30 Q 150,65 150,120" fill="url(#outerPetal)"/>
+                    <path class="petal p2" d="M 150,120 Q 230,80 215,30 Q 150,65 150,120" fill="url(#outerPetal)"/>
                     
-                    <!-- Center Core -->
-                    <path class="petal p5" d="M 150,105 Q 132,55 150,50 Q 168,55 150,105" fill="#5c0011"/>
+                    <!-- Middle Petals Layer 2 -->
+                    <path class="petal p3" d="M 150,120 Q 90,30 150,15 Q 210,30 150,120" fill="url(#outerPetal)"/>
+                    <path class="petal p4" d="M 150,115 Q 110,40 150,25 Q 190,40 150,115" fill="url(#petalCore)"/>
+                    
+                    <!-- Rose Center Bud -->
+                    <ellipse class="petal p5" cx="150" cy="55" rx="20" ry="30" fill="url(#petalCore)"/>
                 </g>
             </svg>
+
+            <!-- Butterfly Landing Directly on Rose -->
+            <div class="landing-butterfly">🦋</div>
         </div>
 
-        <!-- Flying Bird -->
-        <div class="flying-bird">🕊️</div>
-
-        <!-- Butterfly landing on flower -->
-        <div class="landing-butterfly">🦋</div>
     </div>
+
 </section>
     <script src="script.js"></script>
 </body>
