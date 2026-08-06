@@ -943,25 +943,25 @@ button:hover{
 /* Background Image Wrap */
 .letter-bg-wrap {
     position: relative;
-    background-image: url('Mohin.jpeg'), linear-gradient(135deg, #1f0b18, #360924);
+    background-image: url('Mohin.jpeg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     border-radius: 16px;
     padding: 40px 35px 60px 35px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 30px rgba(216, 27, 96, 0.3);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 
+                0 0 30px rgba(216, 27, 96, 0.3);
     border: 1px solid rgba(255, 215, 0, 0.3);
     overflow: hidden;
 }
 
-/* Dark Glassmorphism Overlay */
+/* Dark Glass Overlay */
 .letter-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(15, 10, 20, 0.82);
-    backdrop-filter: blur(8px);
+    inset: 0;
+    background: rgba(15, 10, 20, 0.30);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     z-index: 1;
 }
 
