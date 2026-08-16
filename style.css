@@ -4911,3 +4911,554 @@ p {
     }
 
 }
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 10
+   FLOWER BOUQUET — CINEMATIC GALLERY
+========================================================= */
+
+
+/* =========================================================
+   FLOWER PAGE
+========================================================= */
+
+.flower-page {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 18px;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255, 190, 210, 0.10),
+            transparent 48%
+        ),
+        linear-gradient(
+            145deg,
+            #08070b,
+            #130d14 52%,
+            #070609
+        );
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   CINEMATIC BACKGROUND GLOW
+========================================================= */
+
+.flower-page::before {
+    content: "";
+
+    position: absolute;
+
+    width: 75vw;
+    height: 75vw;
+
+    max-width: 850px;
+    max-height: 850px;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 170, 200, 0.10),
+            transparent 68%
+        );
+
+    filter: blur(45px);
+
+    animation:
+        flowerAmbient 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+@keyframes flowerAmbient {
+
+    from {
+        opacity: 0.45;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.90);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   FLOWER PARTICLE LAYER
+========================================================= */
+
+.flower-particles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.flower-particle {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 220, 235, 0.8);
+
+    box-shadow:
+        0 0 10px rgba(255, 190, 215, 0.5);
+
+    animation:
+        flowerParticleFloat
+        var(--particle-time, 5s)
+        ease-in-out
+        infinite;
+
+    animation-delay:
+        var(--particle-delay, 0s);
+}
+
+
+@keyframes flowerParticleFloat {
+
+    0%,
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(0.5);
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-18px)
+            scale(1.15);
+    }
+
+    85% {
+        opacity: 0.2;
+    }
+
+}
+
+
+/* =========================================================
+   FLOWER CONTENT
+========================================================= */
+
+.flower-content {
+    position: relative;
+
+    width: min(680px, 92vw);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 5;
+
+    animation:
+        flowerContentReveal
+        1.4s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        both;
+}
+
+
+@keyframes flowerContentReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   FLOWER IMAGE FRAME
+========================================================= */
+
+.flower-image-frame {
+    position: relative;
+
+    width: min(560px, 88vw);
+
+    height: min(620px, 72svh);
+
+    padding: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border:
+        1px solid rgba(255, 220, 235, 0.24);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.58),
+        0 0 45px rgba(255, 170, 205, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FLOWER IMAGE
+========================================================= */
+
+.flower-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0, 0, 0, 0.15);
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    animation:
+        flowerImageZoom
+        7s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes flowerImageZoom {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.035);
+    }
+
+}
+
+
+/* =========================================================
+   GLASS REFLECTION
+========================================================= */
+
+.flower-image-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255, 255, 255, 0.14),
+            transparent 26%,
+            transparent 73%,
+            rgba(255, 255, 255, 0.035)
+        );
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   FRAME GLOW
+========================================================= */
+
+.flower-image-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 0 28px rgba(255, 205, 225, 0.08);
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* =========================================================
+   FLOWER MESSAGE
+========================================================= */
+
+.flower-message {
+    margin-top: 27px;
+
+    max-width: 600px;
+
+    padding: 0 18px;
+
+    text-align: center;
+
+    color:
+        rgba(255, 241, 246, 0.92);
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(
+            1.25rem,
+            3vw,
+            1.75rem
+        );
+
+    line-height: 1.35;
+
+    letter-spacing: 0.015em;
+
+    text-shadow:
+        0 0 16px rgba(255, 190, 215, 0.16);
+
+    opacity: 0;
+
+    animation:
+        flowerMessageReveal
+        1.1s
+        ease
+        0.8s
+        forwards;
+}
+
+
+@keyframes flowerMessageReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   MESSAGE EMPHASIS
+========================================================= */
+
+.flower-message span {
+    color:
+        rgba(255, 205, 222, 0.98);
+
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size: 1.18em;
+}
+
+
+/* =========================================================
+   LITTLE HEART
+========================================================= */
+
+.flower-heart {
+    display: inline-block;
+
+    margin-left: 5px;
+
+    font-size: 0.9em;
+
+    animation:
+        flowerHeartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes flowerHeartPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .flower-page {
+        padding:
+            45px
+            10px;
+    }
+
+
+    .flower-content {
+        width: 96vw;
+    }
+
+
+    .flower-image-frame {
+        width: 91vw;
+
+        height: 68svh;
+
+        min-height: 420px;
+
+        padding: 7px;
+
+        border-radius: 17px;
+    }
+
+
+    .flower-image-frame::before {
+        inset: 7px;
+
+        border-radius: 11px;
+    }
+
+
+    .flower-image {
+        border-radius: 11px;
+    }
+
+
+    .flower-message {
+        margin-top: 20px;
+
+        padding:
+            0
+            14px;
+
+        font-size: 1.25rem;
+
+        line-height: 1.35;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .flower-image-frame {
+        height: 63svh;
+
+        min-height: 370px;
+    }
+
+
+    .flower-message {
+        font-size: 1.12rem;
+    }
+
+}
