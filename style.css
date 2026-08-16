@@ -4228,3 +4228,686 @@ p {
     }
 
 }
+
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 9
+   FRIENDSHIP LETTER — EMOTIONAL CINEMATIC
+========================================================= */
+
+
+/* =========================================================
+   FRIENDSHIP LETTER PAGE
+========================================================= */
+
+.friendship-letter-page {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 18px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(220, 180, 155, 0.08),
+            transparent 50%
+        ),
+        linear-gradient(
+            145deg,
+            #0a090b,
+            #151016 52%,
+            #08070a
+        );
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   AMBIENT LIGHT
+========================================================= */
+
+.friendship-letter-page::before {
+    content: "";
+
+    position: absolute;
+
+    width: 80vw;
+    height: 80vw;
+
+    max-width: 900px;
+    max-height: 900px;
+
+    left: 50%;
+    top: 45%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 205, 185, 0.075),
+            transparent 68%
+        );
+
+    filter: blur(35px);
+
+    animation:
+        friendshipAmbient 9s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+@keyframes friendshipAmbient {
+
+    from {
+        opacity: 0.45;
+        transform:
+            translate(-50%, -50%)
+            scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   FRIENDSHIP LETTER CARD
+========================================================= */
+
+.friendship-letter-card {
+    position: relative;
+
+    width: min(850px, 94vw);
+
+    padding:
+        clamp(34px, 6vw, 72px)
+        clamp(24px, 6vw, 70px);
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(250, 244, 236, 0.985),
+            rgba(239, 228, 216, 0.975)
+        );
+
+    color: #40373a;
+
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.58),
+        0 0 45px rgba(255, 210, 190, 0.06);
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    z-index: 5;
+
+    animation:
+        friendshipLetterReveal
+        1.3s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        both;
+}
+
+
+@keyframes friendshipLetterReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(45px)
+            scale(0.965)
+            rotateX(3deg);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotateX(0deg);
+    }
+
+}
+
+
+/* =========================================================
+   PAPER GRAIN
+========================================================= */
+
+.friendship-letter-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 18% 25%,
+            rgba(100, 70, 55, 0.035) 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 76% 68%,
+            rgba(100, 70, 55, 0.025) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        21px 21px,
+        29px 29px;
+
+    opacity: 0.7;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   PAPER LIGHT
+========================================================= */
+
+.friendship-letter-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255, 255, 255, 0.38),
+            transparent 28%,
+            transparent 72%,
+            rgba(110, 70, 50, 0.035)
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   FRIENDSHIP TITLE
+========================================================= */
+
+.friendship-letter-card h1 {
+    position: relative;
+
+    margin: 0 0 32px;
+
+    text-align: center;
+
+    color: #5b454a;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(2rem, 5vw, 3rem);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    letter-spacing: 0.025em;
+}
+
+
+/* =========================================================
+   TITLE LINE
+========================================================= */
+
+.friendship-letter-card h1::after {
+    content: "";
+
+    display: block;
+
+    width: 100px;
+    height: 1px;
+
+    margin: 16px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(115, 78, 70, 0.5),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   FRIENDSHIP TEXT
+========================================================= */
+
+.friendship-letter-text {
+    position: relative;
+
+    color: #51484a;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(1.02rem, 2vw, 1.18rem);
+
+    line-height: 1.86;
+
+    letter-spacing: 0.012em;
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+.friendship-letter-text p {
+    margin: 0 0 21px;
+
+    opacity: 0;
+
+    animation:
+        friendshipParagraph
+        0.9s
+        ease
+        forwards;
+}
+
+
+.friendship-letter-text p:nth-child(1) {
+    animation-delay: 0.35s;
+}
+
+
+.friendship-letter-text p:nth-child(2) {
+    animation-delay: 0.50s;
+}
+
+
+.friendship-letter-text p:nth-child(3) {
+    animation-delay: 0.65s;
+}
+
+
+.friendship-letter-text p:nth-child(4) {
+    animation-delay: 0.80s;
+}
+
+
+.friendship-letter-text p:nth-child(5) {
+    animation-delay: 0.95s;
+}
+
+
+.friendship-letter-text p:nth-child(6) {
+    animation-delay: 1.10s;
+}
+
+
+.friendship-letter-text p:nth-child(7) {
+    animation-delay: 1.25s;
+}
+
+
+@keyframes friendshipParagraph {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   IMPORTANT SENTENCE EMPHASIS
+========================================================= */
+
+.friendship-letter-text p:first-child {
+    color: #624a50;
+
+    font-weight: 600;
+
+    font-size: 1.08em;
+}
+
+
+/* =========================================================
+   "FOREVER GRATEFUL"
+========================================================= */
+
+.friendship-highlight {
+    margin: 28px 0 30px;
+
+    text-align: center;
+
+    color: #74515b;
+
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size:
+        clamp(1.65rem, 4vw, 2.25rem);
+
+    line-height: 1.2;
+
+    opacity: 0;
+
+    animation:
+        highlightReveal
+        1s
+        ease
+        1.4s
+        forwards;
+}
+
+
+@keyframes highlightReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL DIVIDER
+========================================================= */
+
+.friendship-divider {
+    width: 55px;
+    height: 1px;
+
+    margin: 28px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(120, 80, 75, 0.45),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   FINAL FRIENDSHIP LINE
+========================================================= */
+
+.friendship-final-line {
+    margin-top: 32px;
+
+    text-align: center;
+
+    color: #634b51;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.2rem);
+
+    font-style: italic;
+
+    line-height: 1.7;
+
+    opacity: 0;
+
+    animation:
+        finalFriendshipReveal
+        1s
+        ease
+        1.8s
+        forwards;
+}
+
+
+@keyframes finalFriendshipReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   DECORATIVE CORNERS
+========================================================= */
+
+.friendship-letter-corner {
+    position: absolute;
+
+    width: 34px;
+    height: 34px;
+
+    border-color:
+        rgba(115, 78, 72, 0.25);
+
+    pointer-events: none;
+}
+
+
+.friendship-corner-tl {
+    top: 18px;
+    left: 18px;
+
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
+
+
+.friendship-corner-tr {
+    top: 18px;
+    right: 18px;
+
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+
+
+.friendship-corner-bl {
+    bottom: 18px;
+    left: 18px;
+
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+}
+
+
+.friendship-corner-br {
+    bottom: 18px;
+    right: 18px;
+
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .friendship-letter-page {
+        padding:
+            42px
+            10px;
+    }
+
+
+    .friendship-letter-card {
+        width: 95vw;
+
+        padding:
+            32px
+            20px;
+    }
+
+
+    .friendship-letter-card h1 {
+        font-size: 1.9rem;
+
+        margin-bottom: 23px;
+    }
+
+
+    .friendship-letter-text {
+        font-size: 0.98rem;
+
+        line-height: 1.76;
+    }
+
+
+    .friendship-letter-text p {
+        margin-bottom: 18px;
+    }
+
+
+    .friendship-highlight {
+        font-size: 1.65rem;
+
+        margin:
+            23px
+            0
+            27px;
+    }
+
+
+    .friendship-final-line {
+        font-size: 1rem;
+    }
+
+
+    .friendship-letter-corner {
+        width: 22px;
+        height: 22px;
+    }
+
+
+    .friendship-corner-tl,
+    .friendship-corner-tr {
+        top: 11px;
+    }
+
+
+    .friendship-corner-bl,
+    .friendship-corner-br {
+        bottom: 11px;
+    }
+
+
+    .friendship-corner-tl,
+    .friendship-corner-bl {
+        left: 11px;
+    }
+
+
+    .friendship-corner-tr,
+    .friendship-corner-br {
+        right: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .friendship-letter-card {
+        padding:
+            27px
+            17px;
+    }
+
+
+    .friendship-letter-card h1 {
+        font-size: 1.7rem;
+    }
+
+
+    .friendship-letter-text {
+        font-size: 0.92rem;
+
+        line-height: 1.7;
+    }
+
+
+    .friendship-highlight {
+        font-size: 1.48rem;
+    }
+
+}
