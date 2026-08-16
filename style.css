@@ -3070,4 +3070,581 @@ p {
 
 }
 
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 7
+   BIRTHDAY LETTER — LUXURY PAPER
+========================================================= */
+
+
+/* =========================================================
+   LETTER PAGE
+========================================================= */
+
+.letter-page {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 22px;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 220, 205, 0.08),
+            transparent 48%
+        ),
+        linear-gradient(
+            135deg,
+            #09080b,
+            #151018 50%,
+            #08070a
+        );
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   LETTER AMBIENT LIGHT
+========================================================= */
+
+.letter-page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 220, 205, 0.08),
+            transparent 55%
+        );
+
+    filter: blur(35px);
+
+    animation:
+        letterAmbient 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+@keyframes letterAmbient {
+
+    from {
+        opacity: 0.55;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.06);
+    }
+
+}
+
+
+/* =========================================================
+   LETTER CARD
+========================================================= */
+
+.letter-card {
+    position: relative;
+
+    width: min(820px, 94vw);
+
+    padding:
+        clamp(30px, 6vw, 68px)
+        clamp(22px, 6vw, 70px);
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 250, 242, 0.98),
+            rgba(246, 235, 222, 0.97)
+        );
+
+    color: #30272a;
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.55),
+        0 0 45px rgba(255, 220, 200, 0.07);
+
+    transform:
+        perspective(1200px)
+        rotateX(0deg);
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    z-index: 5;
+
+    animation:
+        letterReveal 1.2s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+}
+
+
+@keyframes letterReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            perspective(1200px)
+            translateY(35px)
+            rotateX(4deg)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            perspective(1200px)
+            translateY(0)
+            rotateX(0deg)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   PAPER TEXTURE
+========================================================= */
+
+.letter-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(110, 75, 55, 0.035) 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 75% 70%,
+            rgba(110, 75, 55, 0.025) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        19px 19px,
+        27px 27px;
+
+    opacity: 0.7;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   PAPER LIGHT
+========================================================= */
+
+.letter-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255, 255, 255, 0.42),
+            transparent 30%,
+            transparent 70%,
+            rgba(130, 80, 50, 0.04)
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   LETTER TITLE
+========================================================= */
+
+.letter-card h1 {
+    position: relative;
+
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    color: #4a3439;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(
+        2rem,
+        5vw,
+        3.2rem
+    );
+
+    font-weight: 600;
+
+    line-height: 1.1;
+
+    letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   TITLE UNDERLINE
+========================================================= */
+
+.letter-card h1::after {
+    content: "";
+
+    display: block;
+
+    width: 85px;
+    height: 1px;
+
+    margin: 17px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(115, 75, 70, 0.55),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   LETTER TEXT
+========================================================= */
+
+.letter-text {
+    position: relative;
+
+    color: #51464a;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(
+        1.05rem,
+        2vw,
+        1.22rem
+    );
+
+    line-height: 1.85;
+
+    letter-spacing: 0.015em;
+}
+
+
+/* =========================================================
+   LETTER PARAGRAPHS
+========================================================= */
+
+.letter-text p {
+    margin-bottom: 20px;
+
+    opacity: 0;
+
+    animation:
+        paragraphReveal
+        0.9s
+        ease
+        forwards;
+}
+
+
+.letter-text p:nth-child(1) {
+    animation-delay: 0.45s;
+}
+
+
+.letter-text p:nth-child(2) {
+    animation-delay: 0.65s;
+}
+
+
+.letter-text p:nth-child(3) {
+    animation-delay: 0.85s;
+}
+
+
+.letter-text p:nth-child(4) {
+    animation-delay: 1.05s;
+}
+
+
+.letter-text p:nth-child(5) {
+    animation-delay: 1.25s;
+}
+
+
+.letter-text p:nth-child(6) {
+    animation-delay: 1.45s;
+}
+
+
+@keyframes paragraphReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   FIRST LINE EMPHASIS
+========================================================= */
+
+.letter-text p:first-child {
+    color: #6d4852;
+
+    font-weight: 600;
+
+    font-size: 1.12em;
+}
+
+
+/* =========================================================
+   LETTER DECORATIVE CORNERS
+========================================================= */
+
+.letter-card .letter-corner {
+    position: absolute;
+
+    width: 32px;
+    height: 32px;
+
+    border-color:
+        rgba(120, 78, 75, 0.28);
+
+    pointer-events: none;
+}
+
+
+.letter-corner.top-left {
+    left: 18px;
+    top: 18px;
+
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
+
+
+.letter-corner.top-right {
+    right: 18px;
+    top: 18px;
+
+    border-right: 1px solid;
+    border-top: 1px solid;
+}
+
+
+.letter-corner.bottom-left {
+    left: 18px;
+    bottom: 18px;
+
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+}
+
+
+.letter-corner.bottom-right {
+    right: 18px;
+    bottom: 18px;
+
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+}
+
+
+/* =========================================================
+   LETTER FOOTER
+========================================================= */
+
+.letter-signature {
+    margin-top: 34px;
+
+    text-align: right;
+
+    color: #76535b;
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(
+        1.5rem,
+        4vw,
+        2rem
+    );
+
+    opacity: 0;
+
+    animation:
+        signatureReveal 1s ease 1.7s forwards;
+}
+
+
+@keyframes signatureReveal {
+
+    from {
+        opacity: 0;
+        transform: translateX(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE LETTER
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .letter-page {
+        padding:
+            40px
+            12px;
+    }
+
+
+    .letter-card {
+        width: 94vw;
+
+        padding:
+            32px
+            21px;
+
+        border-radius: 3px;
+    }
+
+
+    .letter-card h1 {
+        margin-bottom: 22px;
+
+        font-size: 2rem;
+    }
+
+
+    .letter-card h1::after {
+        margin-top: 12px;
+    }
+
+
+    .letter-text {
+        font-size: 1rem;
+
+        line-height: 1.75;
+    }
+
+
+    .letter-text p {
+        margin-bottom: 17px;
+    }
+
+
+    .letter-signature {
+        margin-top: 25px;
+
+        font-size: 1.55rem;
+    }
+
+
+    .letter-card .letter-corner {
+        width: 22px;
+        height: 22px;
+    }
+
+
+    .letter-corner.top-left,
+    .letter-corner.top-right {
+        top: 12px;
+    }
+
+
+    .letter-corner.bottom-left,
+    .letter-corner.bottom-right {
+        bottom: 12px;
+    }
+
+
+    .letter-corner.top-left,
+    .letter-corner.bottom-left {
+        left: 12px;
+    }
+
+
+    .letter-corner.top-right,
+    .letter-corner.bottom-right {
+        right: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .letter-card {
+        padding:
+            28px
+            18px;
+    }
+
+
+    .letter-card h1 {
+        font-size: 1.75rem;
+    }
+
+
+    .letter-text {
+        font-size: 0.94rem;
+
+        line-height: 1.7;
+    }
+
+}
+
 
