@@ -802,3 +802,2272 @@ p {
     }
 
 }
+
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 3
+   GLASS CALENDAR + BIRTH MONTH TITLE
+========================================================= */
+
+
+/* =========================================================
+   CALENDAR CONTAINER
+========================================================= */
+
+.birthday-calendar {
+    position: absolute;
+
+    left: 50%;
+
+    top: 7%;
+
+    transform: translateX(-50%);
+
+    width: min(420px, 88vw);
+
+    padding: 18px 20px 20px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 0 35px rgba(255, 190, 215, 0.07);
+
+    z-index: 15;
+
+    animation:
+        calendarFloat 6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CALENDAR SOFT OUTER GLOW
+========================================================= */
+
+.birthday-calendar::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.20),
+            transparent 35%,
+            transparent 65%,
+            rgba(255, 205, 225, 0.13)
+        );
+
+    opacity: 0.65;
+
+    filter: blur(8px);
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CALENDAR FLOAT
+========================================================= */
+
+@keyframes calendarFloat {
+
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-5px);
+    }
+
+}
+
+
+/* =========================================================
+   BIRTH MONTH TITLE
+========================================================= */
+
+.birthday-calendar-title {
+    position: relative;
+
+    margin-bottom: 14px;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.96);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(
+        1.05rem,
+        3vw,
+        1.45rem
+    );
+
+    font-weight: 600;
+
+    letter-spacing: 0.025em;
+
+    text-shadow:
+        0 0 12px rgba(255, 210, 225, 0.32);
+
+}
+
+
+/* =========================================================
+   TITLE MINI SPARKLES
+========================================================= */
+
+.birthday-calendar-title::before {
+    content: "✦";
+
+    margin-right: 8px;
+
+    font-size: 0.72em;
+
+    opacity: 0.75;
+
+    animation:
+        calendarSparkle 2.4s ease-in-out infinite;
+}
+
+
+.birthday-calendar-title::after {
+    content: "✦";
+
+    margin-left: 8px;
+
+    font-size: 0.72em;
+
+    opacity: 0.75;
+
+    animation:
+        calendarSparkle 2.4s ease-in-out infinite reverse;
+}
+
+
+@keyframes calendarSparkle {
+
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* =========================================================
+   CALENDAR HEADER
+========================================================= */
+
+.calendar-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 4px 12px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    margin-bottom: 10px;
+}
+
+
+.calendar-month {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.25rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-transform: uppercase;
+}
+
+
+.calendar-year {
+    font-size: 0.72rem;
+
+    letter-spacing: 0.16em;
+
+    color: rgba(255, 255, 255, 0.52);
+}
+
+
+/* =========================================================
+   CALENDAR WEEKDAYS
+========================================================= */
+
+.calendar-weekdays {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 4px;
+
+    margin-bottom: 6px;
+}
+
+
+.calendar-weekdays span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 24px;
+
+    font-size: 0.62rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CALENDAR GRID
+========================================================= */
+
+.calendar-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 5px;
+}
+
+
+/* =========================================================
+   CALENDAR DAY
+========================================================= */
+
+.calendar-day {
+    position: relative;
+
+    aspect-ratio: 1;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 0.72rem;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   EMPTY DAYS
+========================================================= */
+
+.calendar-day.empty {
+    background: transparent;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.calendar-day:not(.empty):hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   BIRTHDAY — 17
+========================================================= */
+
+.calendar-day.birthday-date {
+    color: #ffffff;
+
+    font-weight: 700;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 190, 215, 0.28),
+            rgba(255, 190, 215, 0.08) 65%,
+            transparent 70%
+        );
+
+    border:
+        1px solid rgba(255, 205, 225, 0.38);
+
+    box-shadow:
+        0 0 18px rgba(255, 180, 210, 0.22),
+        inset 0 0 14px rgba(255, 210, 225, 0.08);
+
+    animation:
+        birthdayDateGlow 2.5s ease-in-out infinite;
+}
+
+
+@keyframes birthdayDateGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 12px rgba(255, 180, 210, 0.16),
+            inset 0 0 10px rgba(255, 210, 225, 0.05);
+    }
+
+    50% {
+        box-shadow:
+            0 0 26px rgba(255, 180, 210, 0.34),
+            inset 0 0 16px rgba(255, 210, 225, 0.12);
+    }
+
+}
+
+
+/* =========================================================
+   BIRTHDAY HEART
+========================================================= */
+
+.calendar-day.birthday-date::after {
+    content: "♥";
+
+    position: absolute;
+
+    right: 4px;
+    top: 2px;
+
+    font-size: 0.42rem;
+
+    color: rgba(255, 215, 230, 0.85);
+
+    animation:
+        heartPulse 1.8s ease-in-out infinite;
+}
+
+
+@keyframes heartPulse {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   CALENDAR FOOTER
+========================================================= */
+
+.calendar-footer {
+    margin-top: 12px;
+
+    padding-top: 10px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.12em;
+
+    color: rgba(255, 255, 255, 0.48);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MOBILE CALENDAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .birthday-calendar {
+        top: 4.5%;
+
+        width: min(350px, 91vw);
+
+        padding:
+            14px
+            14px
+            16px;
+
+        border-radius: 18px;
+    }
+
+
+    .birthday-calendar-title {
+        margin-bottom: 10px;
+
+        font-size: 1rem;
+    }
+
+
+    .calendar-header {
+        padding-bottom: 8px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .calendar-month {
+        font-size: 1rem;
+    }
+
+
+    .calendar-year {
+        font-size: 0.62rem;
+    }
+
+
+    .calendar-grid {
+        gap: 3px;
+    }
+
+
+    .calendar-day {
+        border-radius: 7px;
+
+        font-size: 0.64rem;
+    }
+
+
+    .calendar-weekdays {
+        gap: 3px;
+    }
+
+
+    .calendar-weekdays span {
+        min-height: 20px;
+
+        font-size: 0.52rem;
+    }
+
+
+    .calendar-footer {
+        margin-top: 9px;
+
+        padding-top: 8px;
+
+        font-size: 0.55rem;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .birthday-calendar {
+        width: 94vw;
+
+        padding: 12px;
+    }
+
+
+    .birthday-calendar-title {
+        font-size: 0.92rem;
+    }
+
+
+    .calendar-day {
+        font-size: 0.58rem;
+    }
+
+}
+
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 4
+   3-TIER CAKE + PLATE + CINEMATIC GLOW
+========================================================= */
+
+
+/* =========================================================
+   CAKE MASTER
+========================================================= */
+
+.birthday-cake {
+    position: absolute;
+
+    left: 50%;
+    bottom: 5%;
+
+    transform: translateX(-50%);
+
+    width: min(430px, 82vw);
+
+    height: 390px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+
+    z-index: 12;
+
+    filter:
+        drop-shadow(
+            0 25px 35px rgba(0, 0, 0, 0.42)
+        );
+}
+
+
+/* =========================================================
+   SOFT CAKE AURA
+========================================================= */
+
+.birthday-cake::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    width: 380px;
+    height: 180px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 190, 215, 0.20),
+            rgba(255, 190, 215, 0.06) 45%,
+            transparent 72%
+        );
+
+    filter: blur(22px);
+
+    z-index: -1;
+
+    animation:
+        cakeAura 4s ease-in-out infinite alternate;
+}
+
+
+@keyframes cakeAura {
+
+    from {
+        opacity: 0.55;
+        transform: translateX(-50%) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   CAKE TIER BASE
+========================================================= */
+
+.cake-tier {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        16px
+        16px
+        12px
+        12px;
+
+    overflow: visible;
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.30),
+        inset 0 2px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   BOTTOM — BIGGEST TIER
+========================================================= */
+
+.cake-tier-bottom {
+    width: 100%;
+
+    height: 112px;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff0f5 0%,
+            #f5cbd8 45%,
+            #d991aa 100%
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================================
+   MIDDLE — MEDIUM TIER
+========================================================= */
+
+.cake-tier-middle {
+    width: 78%;
+
+    height: 92px;
+
+    margin-bottom: -4px;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff4f7 0%,
+            #f6d3de 48%,
+            #db9aae 100%
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================================
+   TOP — SMALLEST TIER
+========================================================= */
+
+.cake-tier-top {
+    width: 57%;
+
+    height: 72px;
+
+    margin-bottom: -4px;
+
+    z-index: 3;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff8fa 0%,
+            #f7dce5 50%,
+            #dfa3b6 100%
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.42);
+}
+
+
+/* =========================================================
+   CAKE TIER HIGHLIGHT
+========================================================= */
+
+.cake-tier::before {
+    content: "";
+
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    top: 7px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.38),
+            rgba(255, 255, 255, 0)
+        );
+
+    filter: blur(3px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CAKE DECORATIVE EDGE
+========================================================= */
+
+.cake-tier::after {
+    content: "";
+
+    position: absolute;
+
+    left: 4%;
+    right: 4%;
+    bottom: 9px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.22) 0 10px,
+            transparent 10px 18px
+        );
+
+    opacity: 0.55;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CAKE CREAM DRIPS
+========================================================= */
+
+.cake-cream-drips {
+    position: absolute;
+
+    left: 3%;
+    right: 3%;
+
+    top: -1px;
+
+    height: 28px;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+.cake-cream-drips::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 10% 0,
+            #fff7fa 0 12px,
+            transparent 13px
+        ),
+        radial-gradient(
+            ellipse at 28% 0,
+            #fff7fa 0 15px,
+            transparent 16px
+        ),
+        radial-gradient(
+            ellipse at 50% 0,
+            #fff7fa 0 12px,
+            transparent 13px
+        ),
+        radial-gradient(
+            ellipse at 72% 0,
+            #fff7fa 0 15px,
+            transparent 16px
+        ),
+        radial-gradient(
+            ellipse at 90% 0,
+            #fff7fa 0 11px,
+            transparent 12px
+        );
+
+    opacity: 0.95;
+}
+
+
+/* =========================================================
+   CAKE TEXT
+========================================================= */
+
+.cake-tier-text {
+    position: relative;
+
+    z-index: 8;
+
+    color: rgba(100, 32, 55, 0.82);
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(
+        1.1rem,
+        3vw,
+        1.65rem
+    );
+
+    text-align: center;
+
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.65);
+
+    transform: translateY(3px);
+}
+
+
+/* =========================================================
+   TOP CAKE TEXT
+========================================================= */
+
+.cake-tier-top .cake-tier-text {
+    font-size: clamp(
+        1rem,
+        3vw,
+        1.35rem
+    );
+}
+
+
+/* =========================================================
+   CAKE CANDLES
+========================================================= */
+
+.cake-candles {
+    position: absolute;
+
+    left: 50%;
+    top: -68px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    z-index: 10;
+}
+
+
+.cake-candle {
+    position: relative;
+
+    width: 9px;
+    height: 48px;
+
+    border-radius: 5px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.9) 0 5px,
+            rgba(235, 160, 185, 0.85) 5px 10px
+        );
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   CANDLE FLAME
+========================================================= */
+
+.cake-flame {
+    position: absolute;
+
+    left: 50%;
+    top: -23px;
+
+    width: 13px;
+    height: 22px;
+
+    transform:
+        translateX(-50%)
+        rotate(1deg);
+
+    border-radius:
+        50%
+        50%
+        50%
+        50%;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #fff8b0 0%,
+            #ffd36b 35%,
+            #ff9b62 68%,
+            transparent 72%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(255, 190, 100, 0.75)
+        );
+
+    transform-origin: center bottom;
+
+    animation:
+        flameFlicker 0.85s ease-in-out infinite alternate;
+}
+
+
+@keyframes flameFlicker {
+
+    from {
+        transform:
+            translateX(-50%)
+            rotate(-5deg)
+            scale(0.88);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            rotate(5deg)
+            scale(1.12);
+    }
+
+}
+
+
+/* =========================================================
+   CAKE PLATE
+========================================================= */
+
+.cake-plate {
+    position: relative;
+
+    width: 112%;
+
+    height: 34px;
+
+    margin-top: -2px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.28),
+            rgba(255, 255, 255, 0.08)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.24);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(255, 195, 215, 0.10),
+        inset 0 2px 0 rgba(255, 255, 255, 0.16);
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   PLATE INNER GLOW
+========================================================= */
+
+.cake-plate::before {
+    content: "";
+
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+    top: 5px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    filter: blur(4px);
+}
+
+
+/* =========================================================
+   PLATE FLOOR SHADOW
+========================================================= */
+
+.cake-plate::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -20px;
+
+    width: 82%;
+    height: 22px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 0, 0, 0.50);
+
+    filter: blur(13px);
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   MOBILE CAKE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .birthday-cake {
+        width: min(360px, 86vw);
+
+        height: 330px;
+
+        bottom: 5%;
+    }
+
+
+    .birthday-cake::before {
+        width: 320px;
+        height: 150px;
+    }
+
+
+    .cake-tier-bottom {
+        height: 94px;
+    }
+
+
+    .cake-tier-middle {
+        height: 77px;
+    }
+
+
+    .cake-tier-top {
+        height: 60px;
+    }
+
+
+    .cake-candles {
+        top: -58px;
+
+        gap: 11px;
+    }
+
+
+    .cake-candle {
+        width: 8px;
+        height: 40px;
+    }
+
+
+    .cake-flame {
+        width: 11px;
+        height: 19px;
+
+        top: -20px;
+    }
+
+
+    .cake-tier-text {
+        font-size: 1.1rem;
+    }
+
+
+    .cake-tier-top .cake-tier-text {
+        font-size: 0.9rem;
+    }
+
+
+    .cake-plate {
+        width: 114%;
+
+        height: 29px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .birthday-cake {
+        width: 88vw;
+
+        height: 305px;
+    }
+
+
+    .cake-tier-bottom {
+        height: 84px;
+    }
+
+
+    .cake-tier-middle {
+        height: 68px;
+    }
+
+
+    .cake-tier-top {
+        height: 53px;
+    }
+
+
+    .cake-candles {
+        top: -52px;
+
+        gap: 8px;
+    }
+
+
+    .cake-candle {
+        width: 7px;
+        height: 35px;
+    }
+
+
+    .cake-flame {
+        top: -18px;
+
+        width: 10px;
+        height: 17px;
+    }
+
+
+    .cake-tier-text {
+        font-size: 0.95rem;
+    }
+
+
+    .cake-tier-top .cake-tier-text {
+        font-size: 0.78rem;
+    }
+
+}
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 5
+   MAKE A WISH + CELEBRATE BUTTON
+========================================================= */
+
+
+/* =========================================================
+   CAKE ACTION AREA
+========================================================= */
+
+.cake-actions {
+    position: absolute;
+
+    left: 50%;
+    bottom: 1.5%;
+
+    transform: translateX(-50%);
+
+    width: min(420px, 88vw);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    z-index: 25;
+}
+
+
+/* =========================================================
+   MAKE A WISH
+========================================================= */
+
+.make-a-wish {
+    position: relative;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(
+        1.35rem,
+        4vw,
+        1.85rem
+    );
+
+    letter-spacing: 0.02em;
+
+    text-shadow:
+        0 0 10px rgba(255, 210, 225, 0.32),
+        0 2px 8px rgba(0, 0, 0, 0.35);
+
+    animation:
+        wishFloat 3.5s ease-in-out infinite;
+}
+
+
+@keyframes wishFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================================================
+   WISH SPARKLES
+========================================================= */
+
+.make-a-wish::before,
+.make-a-wish::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 0.75rem;
+
+    color: rgba(255, 225, 235, 0.85);
+
+    animation:
+        wishSparkle 2s ease-in-out infinite;
+}
+
+
+.make-a-wish::before {
+    left: -24px;
+}
+
+
+.make-a-wish::after {
+    right: -24px;
+
+    animation-delay: 0.8s;
+}
+
+
+@keyframes wishSparkle {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform:
+            translateY(-50%)
+            scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translateY(-50%)
+            scale(1.2);
+    }
+
+}
+
+
+/* =========================================================
+   CELEBRATE BUTTON
+========================================================= */
+
+#celebrateBtn {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 175px;
+
+    padding: 13px 27px;
+
+    border-radius: 999px;
+
+    color: #ffffff;
+
+    font-family: 'DM Sans', sans-serif;
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 190, 215, 0.22),
+            rgba(255, 255, 255, 0.07)
+        );
+
+    border:
+        1px solid rgba(255, 220, 232, 0.35);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(255, 180, 210, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+
+/* =========================================================
+   BUTTON LIGHT SWEEP
+========================================================= */
+
+#celebrateBtn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.28),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        buttonShine 3.5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes buttonShine {
+
+    0% {
+        left: -120%;
+    }
+
+    35%,
+    100% {
+        left: 140%;
+    }
+
+}
+
+
+/* =========================================================
+   BUTTON GLOW RING
+========================================================= */
+
+#celebrateBtn::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: inherit;
+
+    border:
+        1px solid rgba(255, 215, 230, 0.22);
+
+    opacity: 0;
+
+    transform: scale(0.92);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+#celebrateBtn:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.025);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 195, 220, 0.30),
+            rgba(255, 255, 255, 0.10)
+        );
+
+    box-shadow:
+        0 15px 38px rgba(0, 0, 0, 0.42),
+        0 0 35px rgba(255, 180, 210, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+
+#celebrateBtn:hover::after {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* =========================================================
+   BUTTON ACTIVE
+========================================================= */
+
+#celebrateBtn:active {
+
+    transform:
+        translateY(1px)
+        scale(0.96);
+
+}
+
+
+/* =========================================================
+   CELEBRATED STATE
+   JS WILL ADD .celebrated
+========================================================= */
+
+#celebrateBtn.celebrated {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 210, 225, 0.30),
+            rgba(255, 255, 255, 0.10)
+        );
+
+    box-shadow:
+        0 0 35px rgba(255, 190, 215, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTON ICON
+========================================================= */
+
+.celebrate-icon {
+    display: inline-block;
+
+    font-size: 1rem;
+
+    animation:
+        celebrateIcon 1.8s ease-in-out infinite;
+}
+
+
+@keyframes celebrateIcon {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-3px)
+            rotate(8deg);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL HELPER TEXT
+========================================================= */
+
+.cake-helper-text {
+    font-size: 0.62rem;
+
+    letter-spacing: 0.10em;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    text-align: center;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .cake-actions {
+        bottom: 1%;
+
+        gap: 10px;
+    }
+
+
+    .make-a-wish {
+        font-size: 1.35rem;
+    }
+
+
+    .make-a-wish::before {
+        left: -19px;
+    }
+
+
+    .make-a-wish::after {
+        right: -19px;
+    }
+
+
+    #celebrateBtn {
+        min-width: 158px;
+
+        padding: 12px 22px;
+
+        font-size: 0.70rem;
+
+        letter-spacing: 0.12em;
+    }
+
+
+    .cake-helper-text {
+        font-size: 0.53rem;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .cake-actions {
+        bottom: 0.8%;
+    }
+
+
+    .make-a-wish {
+        font-size: 1.18rem;
+    }
+
+
+    #celebrateBtn {
+        min-width: 145px;
+
+        padding: 11px 18px;
+    }
+
+}
+
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 6
+   BALLOONS + FLOATING PARTICLES
+========================================================= */
+
+
+/* =========================================================
+   BALLOON CONTAINER
+========================================================= */
+
+.balloons-container {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   BALLOON BASE
+========================================================= */
+
+.balloon {
+    position: absolute;
+
+    bottom: -160px;
+
+    width: 58px;
+    height: 74px;
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    opacity: 0;
+
+    transform:
+        translateY(0)
+        rotate(0deg)
+        scale(0.9);
+
+    filter:
+        drop-shadow(
+            0 10px 14px rgba(0, 0, 0, 0.25)
+        );
+
+    animation:
+        balloonRise
+        var(--balloon-duration, 12s)
+        ease-in-out
+        infinite;
+
+    animation-delay:
+        var(--balloon-delay, 0s);
+}
+
+
+/* =========================================================
+   BALLOON HIGHLIGHT
+========================================================= */
+
+.balloon::before {
+    content: "";
+
+    position: absolute;
+
+    left: 14px;
+    top: 13px;
+
+    width: 13px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.62),
+            rgba(255, 255, 255, 0)
+        );
+
+    transform: rotate(25deg);
+
+    filter: blur(1px);
+}
+
+
+/* =========================================================
+   BALLOON KNOT
+========================================================= */
+
+.balloon::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -6px;
+
+    width: 10px;
+    height: 10px;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+
+    background: inherit;
+}
+
+
+/* =========================================================
+   BALLOON STRING
+========================================================= */
+
+.balloon-string {
+    position: absolute;
+
+    left: 50%;
+    top: 100%;
+
+    width: 1px;
+    height: 145px;
+
+    transform-origin: top center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.42),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    animation:
+        stringSwing 2.8s ease-in-out infinite alternate;
+}
+
+
+@keyframes stringSwing {
+
+    from {
+        transform: rotate(-4deg);
+    }
+
+    to {
+        transform: rotate(4deg);
+    }
+
+}
+
+
+/* =========================================================
+   BALLOON COLORS
+========================================================= */
+
+.balloon-pink {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.32),
+            transparent 18%
+        ),
+        linear-gradient(
+            145deg,
+            #f5a8c1,
+            #bd5278
+        );
+
+    box-shadow:
+        0 0 25px rgba(245, 140, 175, 0.16);
+}
+
+
+.balloon-lilac {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.30),
+            transparent 18%
+        ),
+        linear-gradient(
+            145deg,
+            #d8b8ec,
+            #8b5ba8
+        );
+
+    box-shadow:
+        0 0 25px rgba(190, 145, 225, 0.15);
+}
+
+
+.balloon-cream {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.38),
+            transparent 18%
+        ),
+        linear-gradient(
+            145deg,
+            #fff0dc,
+            #d7a982
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 220, 175, 0.13);
+}
+
+
+.balloon-rose {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.34),
+            transparent 18%
+        ),
+        linear-gradient(
+            145deg,
+            #ffb8bd,
+            #c86470
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 150, 160, 0.15);
+}
+
+
+/* =========================================================
+   BALLOON POSITIONS
+========================================================= */
+
+.balloon-1 {
+    left: 4%;
+
+    --balloon-duration: 15s;
+    --balloon-delay: -4s;
+
+    width: 52px;
+    height: 68px;
+}
+
+
+.balloon-2 {
+    left: 15%;
+
+    --balloon-duration: 13s;
+    --balloon-delay: -8s;
+
+    width: 65px;
+    height: 82px;
+}
+
+
+.balloon-3 {
+    left: 28%;
+
+    --balloon-duration: 17s;
+    --balloon-delay: -2s;
+
+    width: 45px;
+    height: 59px;
+}
+
+
+.balloon-4 {
+    right: 26%;
+
+    --balloon-duration: 14s;
+    --balloon-delay: -9s;
+
+    width: 48px;
+    height: 63px;
+}
+
+
+.balloon-5 {
+    right: 13%;
+
+    --balloon-duration: 16s;
+    --balloon-delay: -5s;
+
+    width: 64px;
+    height: 82px;
+}
+
+
+.balloon-6 {
+    right: 3%;
+
+    --balloon-duration: 12s;
+    --balloon-delay: -1s;
+
+    width: 52px;
+    height: 69px;
+}
+
+
+/* =========================================================
+   BALLOON RISE
+========================================================= */
+
+@keyframes balloonRise {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(-4deg)
+            scale(0.88);
+    }
+
+    10% {
+        opacity: 0.72;
+    }
+
+    45% {
+        transform:
+            translateY(-42vh)
+            translateX(18px)
+            rotate(5deg)
+            scale(1);
+    }
+
+    75% {
+        transform:
+            translateY(-78vh)
+            translateX(-16px)
+            rotate(-5deg)
+            scale(0.98);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-120vh)
+            translateX(12px)
+            rotate(4deg)
+            scale(0.92);
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING SPARKLES
+========================================================= */
+
+.birthday-sparkles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+.birthday-sparkle {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 230, 240, 0.85);
+
+    box-shadow:
+        0 0 8px rgba(255, 210, 230, 0.65);
+
+    animation:
+        sparkleFloat
+        var(--sparkle-time, 5s)
+        ease-in-out
+        infinite;
+
+    animation-delay:
+        var(--sparkle-delay, 0s);
+}
+
+
+@keyframes sparkleFloat {
+
+    0%,
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.5);
+    }
+
+    40% {
+        opacity: 0.85;
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-20px)
+            scale(1.15);
+    }
+
+    80% {
+        opacity: 0.35;
+    }
+
+}
+
+
+/* =========================================================
+   CELEBRATION BURST
+   JS WILL ADD .celebration-active
+========================================================= */
+
+.birthday-page.celebration-active
+.birthday-sparkle {
+
+    animation-duration: 1.4s;
+
+}
+
+
+.birthday-page.celebration-active
+.balloon {
+
+    animation-duration: 7s;
+
+}
+
+
+/* =========================================================
+   SOFT CONFETTI
+========================================================= */
+
+.confetti-container {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+
+.confetti {
+    position: absolute;
+
+    top: -30px;
+
+    width: 7px;
+    height: 13px;
+
+    opacity: 0;
+
+    transform:
+        translateY(0)
+        rotate(0deg);
+
+    animation:
+        confettiFall
+        var(--confetti-time, 4s)
+        linear
+        forwards;
+
+    animation-delay:
+        var(--confetti-delay, 0s);
+}
+
+
+@keyframes confettiFall {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(0, -20px, 0)
+            rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--confetti-x, 30px),
+                110vh,
+                0
+            )
+            rotate(
+                var(--confetti-rotate, 540deg)
+            );
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE BALLOONS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .balloon {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.78);
+    }
+
+
+    .balloon-1,
+    .balloon-6 {
+        display: none;
+    }
+
+
+    .balloon-2 {
+        left: 5%;
+    }
+
+
+    .balloon-3 {
+        left: 24%;
+    }
+
+
+    .balloon-4 {
+        right: 23%;
+    }
+
+
+    .balloon-5 {
+        right: 5%;
+    }
+
+
+    .balloon-string {
+        height: 110px;
+    }
+
+
+    .birthday-sparkle {
+        width: 3px;
+        height: 3px;
+    }
+
+
+    .confetti {
+        width: 5px;
+        height: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .balloon-2,
+    .balloon-5 {
+        width: 52px;
+        height: 67px;
+    }
+
+
+    .balloon-3,
+    .balloon-4 {
+        width: 40px;
+        height: 53px;
+    }
+
+}
+
+
