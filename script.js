@@ -856,4 +856,863 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })();
 
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   JAVASCRIPT PART 4
+   REALISTIC FIREWORKS ENGINE
+========================================================= */
+
+(function () {
+
+    const canvas =
+        document.getElementById("fireworksCanvas");
+
+    if (!canvas) {
+        console.warn(
+            "Fireworks canvas not found."
+        );
+        return;
+    }
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    let width = 0;
+    let height = 0;
+
+    let fireworks = [];
+    let particles = [];
+
+    let animationFrame = null;
+
+    let fireworksRunning = false;
+
+
+
+    /* =====================================================
+       CANVAS RESIZE
+    ===================================================== */
+
+    function resizeCanvas() {
+
+        const ratio =
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
+
+
+        width =
+            window.innerWidth;
+
+        height =
+            window.innerHeight;
+
+
+        canvas.width =
+            width * ratio;
+
+        canvas.height =
+            height * ratio;
+
+
+        canvas.style.width =
+            `${width}px`;
+
+        canvas.style.height =
+            `${height}px`;
+
+
+        ctx.setTransform(
+            ratio,
+            0,
+            0,
+            ratio,
+            0,
+            0
+        );
+
+    }
+
+
+    resizeCanvas();
+
+
+    window.addEventListener(
+        "resize",
+        resizeCanvas
+    );
+
+
+
+    /* =====================================================
+       FIREWORK COLORS
+    ===================================================== */
+
+    const colors = [
+        "#ffd6e7",
+        "#ffffff",
+        "#ffe29a",
+        "#b9d7ff",
+        "#d8c4ff",
+        "#ff9fba"
+    ];
+
+
+
+    /* =====================================================
+       RANDOM COLOR
+    ===================================================== */
+
+    function randomColor() {
+
+        return colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ];
+
+    }
+
+
+
+    /* =====================================================
+       ROCKET CLASS
+    ===================================================== */
+
+    class Rocket {
+
+        constructor(
+            startX,
+            targetX,
+            targetY
+        ) {
+
+            this.x =
+                startX;
+
+            this.y =
+                height + 10;
+
+            this.targetX =
+                targetX;
+
+            this.targetY =
+                targetY;
+
+            this.speed =
+                Math.random() * 3 + 7;
+
+            this.angle =
+                Math.atan2(
+                    targetY - this.y,
+                    targetX - this.x
+                );
+
+            this.vx =
+                Math.cos(
+                    this.angle
+                ) * this.speed;
+
+            this.vy =
+                Math.sin(
+                    this.angle
+                ) * this.speed;
+
+            this.color =
+                randomColor();
+
+            this.trail = [];
+
+            this.exploded =
+                false;
+
+        }
+
+
+        update() {
+
+            this.trail.push({
+                x: this.x,
+                y: this.y
+            });
+
+
+            if (this.trail.length > 7) {
+                this.trail.shift();
+            }
+
+
+            this.x += this.vx;
+
+            this.y += this.vy;
+
+
+            /* Slight gravity */
+
+            this.vy += 0.035;
+
+
+            const distance =
+                Math.hypot(
+                    this.targetX - this.x,
+                    this.targetY - this.y
+                );
+
+
+            if (
+                distance < 18 ||
+                this.vy > -1
+            ) {
+
+                this.explode();
+
+                return true;
+
+            }
+
+
+            return false;
+
+        }
+
+
+        draw() {
+
+            /* Rocket trail */
+
+            ctx.beginPath();
+
+            for (
+                let i = 0;
+                i < this.trail.length;
+                i++
+            ) {
+
+                const point =
+                    this.trail[i];
+
+                if (i === 0) {
+
+                    ctx.moveTo(
+                        point.x,
+                        point.y
+                    );
+
+                } else {
+
+                    ctx.lineTo(
+                        point.x,
+                        point.y
+                    );
+
+                }
+
+            }
+
+
+            ctx.strokeStyle =
+                this.color;
+
+            ctx.globalAlpha =
+                0.65;
+
+            ctx.lineWidth =
+                1.5;
+
+            ctx.stroke();
+
+
+            ctx.globalAlpha = 1;
+
+
+            /* Rocket head */
+
+            ctx.beginPath();
+
+            ctx.arc(
+                this.x,
+                this.y,
+                2,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle =
+                "#ffffff";
+
+            ctx.shadowBlur =
+                12;
+
+            ctx.shadowColor =
+                this.color;
+
+            ctx.fill();
+
+            ctx.shadowBlur =
+                0;
+
+        }
+
+
+        explode() {
+
+            if (this.exploded) {
+                return;
+            }
+
+
+            this.exploded =
+                true;
+
+
+            createExplosion(
+                this.x,
+                this.y,
+                this.color
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       PARTICLE CLASS
+    ===================================================== */
+
+    class Particle {
+
+        constructor(
+            x,
+            y,
+            color,
+            angle,
+            speed,
+            size
+        ) {
+
+            this.x = x;
+
+            this.y = y;
+
+            this.color =
+                color;
+
+            this.angle =
+                angle;
+
+            this.speed =
+                speed;
+
+            this.size =
+                size;
+
+            this.vx =
+                Math.cos(angle) *
+                speed;
+
+            this.vy =
+                Math.sin(angle) *
+                speed;
+
+            this.life =
+                1;
+
+            this.decay =
+                Math.random() *
+                0.012 +
+                0.009;
+
+            this.gravity =
+                0.045;
+
+            this.friction =
+                0.985;
+
+            this.trail = [];
+
+        }
+
+
+        update() {
+
+            this.trail.push({
+                x: this.x,
+                y: this.y
+            });
+
+
+            if (this.trail.length > 5) {
+                this.trail.shift();
+            }
+
+
+            this.vx *=
+                this.friction;
+
+            this.vy *=
+                this.friction;
+
+
+            this.vy +=
+                this.gravity;
+
+
+            this.x +=
+                this.vx;
+
+            this.y +=
+                this.vy;
+
+
+            this.life -=
+                this.decay;
+
+
+            return this.life <= 0;
+
+        }
+
+
+        draw() {
+
+            ctx.globalAlpha =
+                Math.max(
+                    this.life,
+                    0
+                );
+
+
+            /* Particle trail */
+
+            ctx.beginPath();
+
+            for (
+                let i = 0;
+                i < this.trail.length;
+                i++
+            ) {
+
+                const point =
+                    this.trail[i];
+
+                if (i === 0) {
+
+                    ctx.moveTo(
+                        point.x,
+                        point.y
+                    );
+
+                } else {
+
+                    ctx.lineTo(
+                        point.x,
+                        point.y
+                    );
+
+                }
+
+            }
+
+
+            ctx.strokeStyle =
+                this.color;
+
+            ctx.lineWidth =
+                this.size * 0.7;
+
+            ctx.stroke();
+
+
+            /* Particle head */
+
+            ctx.beginPath();
+
+            ctx.arc(
+                this.x,
+                this.y,
+                this.size,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                this.color;
+
+            ctx.shadowBlur =
+                10;
+
+            ctx.shadowColor =
+                this.color;
+
+            ctx.fill();
+
+            ctx.shadowBlur =
+                0;
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       CREATE EXPLOSION
+    ===================================================== */
+
+    function createExplosion(
+        x,
+        y,
+        color
+    ) {
+
+        const particleCount =
+            window.innerWidth < 600
+                ? 65
+                : 110;
+
+
+        for (
+            let i = 0;
+            i < particleCount;
+            i++
+        ) {
+
+            const angle =
+                Math.random() *
+                Math.PI *
+                2;
+
+
+            const speed =
+                Math.random() *
+                5.5 +
+                1.5;
+
+
+            const size =
+                Math.random() *
+                1.5 +
+                0.7;
+
+
+            particles.push(
+                new Particle(
+                    x,
+                    y,
+                    color,
+                    angle,
+                    speed,
+                    size
+                )
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       CREATE ROCKET
+    ===================================================== */
+
+    function launchFirework(
+        targetX,
+        targetY
+    ) {
+
+        const startX =
+            Math.random() *
+            width;
+
+
+        fireworks.push(
+            new Rocket(
+                startX,
+                targetX,
+                targetY
+            )
+        );
+
+    }
+
+
+
+    /* =====================================================
+       RANDOM FIREWORK
+    ===================================================== */
+
+    function launchRandomFirework() {
+
+        const targetX =
+            width *
+            (
+                0.15 +
+                Math.random() *
+                0.70
+            );
+
+
+        const targetY =
+            height *
+            (
+                0.12 +
+                Math.random() *
+                0.40
+            );
+
+
+        launchFirework(
+            targetX,
+            targetY
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ANIMATION LOOP
+    ===================================================== */
+
+    function animate() {
+
+        ctx.fillStyle =
+            "rgba(3, 3, 8, 0.18)";
+
+
+        ctx.fillRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        /* Rockets */
+
+        for (
+            let i = fireworks.length - 1;
+            i >= 0;
+            i--
+        ) {
+
+            const rocket =
+                fireworks[i];
+
+
+            const finished =
+                rocket.update();
+
+
+            rocket.draw();
+
+
+            if (finished) {
+
+                fireworks.splice(
+                    i,
+                    1
+                );
+
+            }
+
+        }
+
+
+        /* Particles */
+
+        for (
+            let i = particles.length - 1;
+            i >= 0;
+            i--
+        ) {
+
+            const particle =
+                particles[i];
+
+
+            const dead =
+                particle.update();
+
+
+            particle.draw();
+
+
+            if (dead) {
+
+                particles.splice(
+                    i,
+                    1
+                );
+
+            }
+
+        }
+
+
+        ctx.globalAlpha =
+            1;
+
+
+        if (
+            fireworksRunning ||
+            fireworks.length ||
+            particles.length
+        ) {
+
+            animationFrame =
+                requestAnimationFrame(
+                    animate
+                );
+
+        } else {
+
+            animationFrame =
+                null;
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       START ENGINE
+    ===================================================== */
+
+    function startFireworks() {
+
+        fireworksRunning =
+            true;
+
+
+        if (!animationFrame) {
+            animate();
+        }
+
+    }
+
+
+
+    /* =====================================================
+       STOP ENGINE
+    ===================================================== */
+
+    function stopFireworks() {
+
+        fireworksRunning =
+            false;
+
+    }
+
+
+
+    /* =====================================================
+       FIREWORK SHOW
+    ===================================================== */
+
+    function fireworkShow(
+        count = 8,
+        interval = 420
+    ) {
+
+        startFireworks();
+
+
+        let launched = 0;
+
+
+        const timer =
+            setInterval(() => {
+
+                launchRandomFirework();
+
+                launched++;
+
+
+                if (
+                    launched >= count
+                ) {
+
+                    clearInterval(
+                        timer
+                    );
+
+                    setTimeout(() => {
+
+                        stopFireworks();
+
+                    }, 5000);
+
+                }
+
+            }, interval);
+
+    }
+
+
+
+    /* =====================================================
+       CONNECT CELEBRATE BUTTON
+    ===================================================== */
+
+    const celebrateBtn =
+        document.getElementById(
+            "celebrateBtn"
+        );
+
+
+    if (celebrateBtn) {
+
+        celebrateBtn.addEventListener(
+            "click",
+            () => {
+
+                fireworkShow(
+                    6,
+                    450
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       EXPOSE FOR FINAL PAGE
+    ===================================================== */
+
+    window.launchFirework =
+        launchFirework;
+
+    window.launchRandomFirework =
+        launchRandomFirework;
+
+    window.startFireworks =
+        startFireworks;
+
+    window.stopFireworks =
+        stopFireworks;
+
+    window.fireworkShow =
+        fireworkShow;
+
+
+
+    console.log(
+        "🎆 Fireworks engine initialized."
+    );
+
+})();
+
 
