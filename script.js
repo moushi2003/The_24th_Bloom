@@ -1715,4 +1715,293 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })();
 
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   JAVASCRIPT PART 5
+   MASTER PAGE CONTROLLER
+========================================================= */
+
+(function () {
+
+    /* =====================================================
+       PAGE SELECTOR
+    ===================================================== */
+
+    const pages = [
+
+        ".birthday-page",
+        ".letter-page",
+        ".memories-page",
+        ".friendship-letter-page",
+        ".flower-page",
+        ".final-page"
+
+    ];
+
+
+    let currentPage = 0;
+
+
+    /* =====================================================
+       FIND EXISTING PAGES
+    ===================================================== */
+
+    const pageElements =
+        pages
+            .map(selector =>
+                document.querySelector(selector)
+            )
+            .filter(Boolean);
+
+
+    if (!pageElements.length) {
+
+        console.warn(
+            "No cinematic pages found."
+        );
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       SHOW PAGE
+    ===================================================== */
+
+    function showPage(index) {
+
+        if (
+            index < 0 ||
+            index >= pageElements.length
+        ) {
+            return;
+        }
+
+
+        pageElements.forEach((page, i) => {
+
+            page.classList.toggle(
+                "active-page",
+                i === index
+            );
+
+        });
+
+
+        currentPage = index;
+
+
+        /* ================================================
+           SPECIAL PAGE ACTIONS
+        ================================================ */
+
+        if (
+            pageElements[index]
+                .classList.contains("final-page")
+        ) {
+
+            startFinale();
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       NEXT PAGE
+    ===================================================== */
+
+    function nextPage() {
+
+        if (
+            currentPage <
+            pageElements.length - 1
+        ) {
+
+            showPage(
+                currentPage + 1
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       PREVIOUS PAGE
+    ===================================================== */
+
+    function previousPage() {
+
+        if (
+            currentPage > 0
+        ) {
+
+            showPage(
+                currentPage - 1
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       FINAL FIREWORK SHOW
+    ===================================================== */
+
+    let finaleStarted = false;
+
+
+    function startFinale() {
+
+        if (finaleStarted) {
+            return;
+        }
+
+
+        finaleStarted = true;
+
+
+        /* Small cinematic pause */
+
+        setTimeout(() => {
+
+            if (
+                typeof window.fireworkShow ===
+                "function"
+            ) {
+
+                window.fireworkShow(
+                    14,
+                    550
+                );
+
+            }
+
+        }, 1200);
+
+
+        /* More fireworks later */
+
+        setTimeout(() => {
+
+            if (
+                typeof window.fireworkShow ===
+                "function"
+            ) {
+
+                window.fireworkShow(
+                    8,
+                    700
+                );
+
+            }
+
+        }, 9000);
+
+    }
+
+
+
+    /* =====================================================
+       GENERIC NEXT BUTTONS
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            "[data-next-page]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                nextPage
+            );
+
+        });
+
+
+
+    /* =====================================================
+       GENERIC PREVIOUS BUTTONS
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            "[data-prev-page]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                previousPage
+            );
+
+        });
+
+
+
+    /* =====================================================
+       KEYBOARD NAVIGATION
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "ArrowRight"
+            ) {
+
+                nextPage();
+
+            }
+
+
+            if (
+                event.key === "ArrowLeft"
+            ) {
+
+                previousPage();
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       EXPOSE CONTROLLER
+    ===================================================== */
+
+    window.showCinematicPage =
+        showPage;
+
+    window.nextCinematicPage =
+        nextPage;
+
+    window.previousCinematicPage =
+        previousPage;
+
+
+
+    /* =====================================================
+       INITIAL PAGE
+    ===================================================== */
+
+    showPage(0);
+
+
+    console.log(
+        "🎬 Master cinematic controller initialized."
+    );
+
+})();
+
 
