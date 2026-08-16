@@ -3647,4 +3647,584 @@ p {
 
 }
 
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 8
+   FRIENDSHIP MEMORIES — 4 PHOTO SLIDESHOW
+========================================================= */
 
+
+/* =========================================================
+   MEMORIES PAGE
+========================================================= */
+
+.memories-page {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 18px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(170, 130, 180, 0.08),
+            transparent 52%
+        ),
+        linear-gradient(
+            180deg,
+            #09080d,
+            #120f17 50%,
+            #07070b
+        );
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   MEMORIES AMBIENT GLOW
+========================================================= */
+
+.memories-page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 215, 230, 0.07),
+            transparent 58%
+        );
+
+    filter: blur(35px);
+
+    animation:
+        memoriesAmbient 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+@keyframes memoriesAmbient {
+
+    from {
+        opacity: 0.55;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.06);
+    }
+
+}
+
+
+/* =========================================================
+   SLIDESHOW CONTAINER
+========================================================= */
+
+.memories-slideshow {
+    position: relative;
+
+    width: min(760px, 94vw);
+
+    height: min(620px, 78svh);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    perspective: 1400px;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   SLIDE
+========================================================= */
+
+.memory-slide {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(70px)
+        scale(0.94)
+        rotateY(-5deg);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.9s ease,
+        transform 1s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =========================================================
+   ACTIVE SLIDE
+========================================================= */
+
+.memory-slide.active {
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1)
+        rotateY(0deg);
+
+    pointer-events: auto;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   GLASS PHOTO FRAME
+========================================================= */
+
+.memory-photo-frame {
+    position: relative;
+
+    width: min(680px, 88vw);
+
+    height: min(570px, 72svh);
+
+    padding: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.20);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(255, 210, 230, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.memory-photo {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 0, 0, 0.16);
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+        saturate(1.02)
+        contrast(1.01);
+
+    transition:
+        transform 1.2s ease,
+        filter 0.8s ease;
+}
+
+
+/* =========================================================
+   ACTIVE PHOTO CINEMATIC ZOOM
+========================================================= */
+
+.memory-slide.active .memory-photo {
+    animation:
+        memorySlowZoom 6s ease-in-out forwards;
+}
+
+
+@keyframes memorySlowZoom {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.035);
+    }
+
+}
+
+
+/* =========================================================
+   GLASS REFLECTION
+========================================================= */
+
+.memory-photo-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255, 255, 255, 0.14),
+            transparent 25%,
+            transparent 72%,
+            rgba(255, 255, 255, 0.035)
+        );
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* =========================================================
+   PHOTO EDGE GLOW
+========================================================= */
+
+.memory-photo-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 0 25px rgba(255, 255, 255, 0.06);
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   PORTRAIT / LANDSCAPE IMAGE SUPPORT
+
+   No object-fit: cover.
+   So faces will NOT be cropped.
+========================================================= */
+
+.memory-photo.portrait {
+    object-fit: contain;
+}
+
+
+.memory-photo.landscape {
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   SLIDESHOW PROGRESS
+========================================================= */
+
+.memory-progress {
+    position: absolute;
+
+    left: 50%;
+    bottom: 24px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    z-index: 20;
+}
+
+
+.memory-progress-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+        0 0 0 rgba(255, 210, 230, 0);
+
+    transition:
+        width 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.memory-progress-dot.active {
+    width: 24px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 220, 232, 0.85);
+
+    box-shadow:
+        0 0 12px rgba(255, 200, 220, 0.25);
+}
+
+
+/* =========================================================
+   NEXT / PREVIOUS BUTTONS
+========================================================= */
+
+.memory-nav {
+    position: absolute;
+
+    top: 50%;
+
+    width: 42px;
+    height: 42px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35);
+
+    z-index: 20;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.memory-nav:hover {
+    background:
+        rgba(255, 255, 255, 0.13);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+
+.memory-nav-prev {
+    left: -12px;
+}
+
+
+.memory-nav-next {
+    right: -12px;
+}
+
+
+/* =========================================================
+   MEMORIES TITLE
+========================================================= */
+
+.memories-title {
+    position: absolute;
+
+    top: 35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 15;
+
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(1.5rem, 4vw, 2.2rem);
+
+    font-weight: 500;
+
+    letter-spacing: 0.06em;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 18px rgba(255, 210, 225, 0.15);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .memories-page {
+        padding:
+            55px
+            8px
+            45px;
+    }
+
+
+    .memories-title {
+        top: 22px;
+
+        font-size: 1.35rem;
+
+        letter-spacing: 0.04em;
+    }
+
+
+    .memories-slideshow {
+        width: 96vw;
+
+        height: 72svh;
+
+        min-height: 430px;
+    }
+
+
+    .memory-photo-frame {
+        width: 91vw;
+
+        height: 66svh;
+
+        min-height: 390px;
+
+        padding: 7px;
+
+        border-radius: 14px;
+    }
+
+
+    .memory-photo-frame::before {
+        inset: 7px;
+
+        border-radius: 9px;
+    }
+
+
+    .memory-photo {
+        border-radius: 9px;
+    }
+
+
+    .memory-nav {
+        width: 36px;
+        height: 36px;
+
+        font-size: 0.8rem;
+    }
+
+
+    .memory-nav-prev {
+        left: 1px;
+    }
+
+
+    .memory-nav-next {
+        right: 1px;
+    }
+
+
+    .memory-progress {
+        bottom: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .memories-slideshow {
+        min-height: 390px;
+    }
+
+
+    .memory-photo-frame {
+        height: 62svh;
+
+        min-height: 350px;
+    }
+
+
+    .memory-nav {
+        width: 32px;
+        height: 32px;
+    }
+
+}
