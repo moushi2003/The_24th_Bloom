@@ -6025,3 +6025,25 @@ p {
     }
 
 }
+
+/* =========================================================
+   MASTER PAGE VISIBILITY
+========================================================= */
+
+.birthday-page,
+.letter-page,
+.memories-page,
+.friendship-letter-page,
+.flower-page,
+.final-page {
+
+    display: none;
+
+}
+
+
+.active-page {
+
+    display: flex;
+
+}
