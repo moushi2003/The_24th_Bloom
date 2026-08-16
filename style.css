@@ -371,3 +371,434 @@ p {
     }
 
 }
+
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   CSS PART 2
+   BIRTHDAY BACKGROUND + CURTAIN
+========================================================= */
+
+
+/* =========================================================
+   BIRTHDAY PAGE MASTER
+========================================================= */
+
+.birthday-page {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255, 185, 210, 0.10) 0%,
+            rgba(100, 70, 120, 0.08) 25%,
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #080711 0%,
+            #111020 48%,
+            #07070d 100%
+        );
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   CINEMATIC BACKGROUND LIGHT
+========================================================= */
+
+.birthday-page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -20%;
+
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(255, 210, 225, 0.11),
+            transparent 42%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        birthdayAmbientGlow 7s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+
+@keyframes birthdayAmbientGlow {
+
+    from {
+        transform: scale(0.95);
+        opacity: 0.65;
+    }
+
+    to {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   SOFT FLOOR LIGHT
+========================================================= */
+
+.birthday-page::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -12%;
+
+    width: min(900px, 100vw);
+    height: 280px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 210, 225, 0.13),
+            transparent 68%
+        );
+
+    filter: blur(22px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   BIRTHDAY CONTENT LAYER
+========================================================= */
+
+.birthday-content {
+    position: relative;
+
+    width: 100%;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   BIRTHDAY HERO
+========================================================= */
+
+.birthday-hero {
+    position: relative;
+
+    width: min(1100px, 100%);
+
+    min-height: 92svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO SPOTLIGHT
+========================================================= */
+
+.hero-spotlight {
+    position: absolute;
+
+    left: 50%;
+    top: 47%;
+
+    width: min(720px, 95vw);
+    height: min(720px, 95vw);
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.09) 0%,
+            rgba(255, 210, 225, 0.055) 25%,
+            rgba(255, 255, 255, 0.015) 50%,
+            transparent 72%
+        );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        spotlightBreath 6s ease-in-out infinite alternate;
+}
+
+
+@keyframes spotlightBreath {
+
+    from {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
+}
+
+
+/* =========================================================
+   HERO GLOW
+========================================================= */
+
+.hero-glow {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 420px;
+    height: 420px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 175, 205, 0.08),
+            transparent 68%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   BIRTHDAY CURTAIN
+========================================================= */
+
+.birthday-curtain {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 100;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CURTAIN PANELS
+========================================================= */
+
+.birthday-curtain::before,
+.birthday-curtain::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #12050b 0%,
+            #2a0715 18%,
+            #4b0d25 45%,
+            #260613 72%,
+            #0d0308 100%
+        );
+
+    box-shadow:
+        inset 0 0 70px rgba(0, 0, 0, 0.65);
+
+    transition:
+        transform 2.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+
+/* =========================================================
+   LEFT CURTAIN
+========================================================= */
+
+.birthday-curtain::before {
+    left: 0;
+
+    transform-origin: left center;
+
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   RIGHT CURTAIN
+========================================================= */
+
+.birthday-curtain::after {
+    right: 0;
+
+    transform-origin: right center;
+
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   CURTAIN OPEN STATE
+   JS WILL ADD .curtain-open
+========================================================= */
+
+.birthday-curtain.curtain-open::before {
+    transform: translateX(-102%);
+}
+
+
+.birthday-curtain.curtain-open::after {
+    transform: translateX(102%);
+}
+
+
+/* =========================================================
+   CURTAIN FABRIC FOLDS
+========================================================= */
+
+.birthday-curtain {
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0 49.7%,
+            rgba(255, 255, 255, 0.12) 49.8%,
+            rgba(255, 255, 255, 0.02) 50%,
+            transparent 50.2% 100%
+        );
+}
+
+
+.birthday-curtain::before {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 0px,
+            rgba(255, 255, 255, 0.025) 18px,
+            rgba(0, 0, 0, 0.16) 34px,
+            rgba(0, 0, 0, 0.22) 52px
+        ),
+        linear-gradient(
+            90deg,
+            #0b0207,
+            #3d0a20 42%,
+            #16040d
+        );
+}
+
+
+.birthday-curtain::after {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 0px,
+            rgba(255, 255, 255, 0.025) 18px,
+            rgba(0, 0, 0, 0.16) 34px,
+            rgba(0, 0, 0, 0.22) 52px
+        ),
+        linear-gradient(
+            90deg,
+            #16040d,
+            #3d0a20 58%,
+            #0b0207
+        );
+}
+
+
+/* =========================================================
+   CURTAIN LIGHT SEAM
+========================================================= */
+
+.birthday-curtain.curtain-open {
+    background: transparent;
+}
+
+
+.birthday-curtain.curtain-open::before,
+.birthday-curtain.curtain-open::after {
+    box-shadow:
+        inset 0 0 55px rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================================================
+   CURTAIN MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .birthday-content {
+        padding: 24px 12px;
+    }
+
+
+    .birthday-hero {
+        min-height: 100svh;
+    }
+
+
+    .hero-spotlight {
+        width: 115vw;
+        height: 115vw;
+    }
+
+
+    .hero-glow {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .birthday-curtain::before,
+    .birthday-curtain::after {
+        transition-duration: 1.9s;
+    }
+
+}
