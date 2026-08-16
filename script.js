@@ -469,3 +469,391 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 });
+
+/* =========================================================
+   MAHEE — CINEMATIC BIRTHDAY
+   JAVASCRIPT PART 3
+   FRIENDSHIP MEMORIES — 4 PHOTO SLIDESHOW
+========================================================= */
+
+(function () {
+
+    const memoriesPage =
+        document.querySelector(".memories-page");
+
+    const slides =
+        document.querySelectorAll(".memory-slide");
+
+    const dots =
+        document.querySelectorAll(".memory-progress-dot");
+
+    const prevBtn =
+        document.querySelector(".memory-nav-prev");
+
+    const nextBtn =
+        document.querySelector(".memory-nav-next");
+
+
+    /* =====================================================
+       SAFETY CHECK
+    ===================================================== */
+
+    if (
+        !memoriesPage ||
+        !slides.length
+    ) {
+        console.warn(
+            "Memories slideshow not found."
+        );
+
+        return;
+    }
+
+
+    /* =====================================================
+       STATE
+    ===================================================== */
+
+    let currentSlide = 0;
+
+    let autoSlideTimer = null;
+
+    const SLIDE_DURATION = 4500;
+
+
+
+    /* =====================================================
+       SHOW SLIDE
+    ===================================================== */
+
+    function showSlide(index) {
+
+        if (!slides.length) {
+            return;
+        }
+
+
+        /* Loop around */
+
+        if (index < 0) {
+            index = slides.length - 1;
+        }
+
+        if (index >= slides.length) {
+            index = 0;
+        }
+
+
+        currentSlide = index;
+
+
+        /* Remove active state */
+
+        slides.forEach((slide) => {
+
+            slide.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        dots.forEach((dot) => {
+
+            dot.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        /* Activate current */
+
+        slides[currentSlide]
+            .classList.add("active");
+
+
+        if (dots[currentSlide]) {
+
+            dots[currentSlide]
+                .classList.add("active");
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       NEXT
+    ===================================================== */
+
+    function nextSlide() {
+
+        showSlide(
+            currentSlide + 1
+        );
+
+        restartAutoSlide();
+
+    }
+
+
+
+    /* =====================================================
+       PREVIOUS
+    ===================================================== */
+
+    function previousSlide() {
+
+        showSlide(
+            currentSlide - 1
+        );
+
+        restartAutoSlide();
+
+    }
+
+
+
+    /* =====================================================
+       AUTO SLIDESHOW
+    ===================================================== */
+
+    function startAutoSlide() {
+
+        clearInterval(
+            autoSlideTimer
+        );
+
+
+        autoSlideTimer =
+            setInterval(() => {
+
+                showSlide(
+                    currentSlide + 1
+                );
+
+            }, SLIDE_DURATION);
+
+    }
+
+
+
+    function restartAutoSlide() {
+
+        startAutoSlide();
+
+    }
+
+
+
+    /* =====================================================
+       BUTTON CONTROLS
+    ===================================================== */
+
+    if (nextBtn) {
+
+        nextBtn.addEventListener(
+            "click",
+            nextSlide
+        );
+
+    }
+
+
+    if (prevBtn) {
+
+        prevBtn.addEventListener(
+            "click",
+            previousSlide
+        );
+
+    }
+
+
+
+    /* =====================================================
+       DOT CONTROLS
+    ===================================================== */
+
+    dots.forEach((dot, index) => {
+
+        dot.addEventListener(
+            "click",
+            () => {
+
+                showSlide(index);
+
+                restartAutoSlide();
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       TOUCH / SWIPE SUPPORT
+    ===================================================== */
+
+    let touchStartX = 0;
+
+    let touchStartY = 0;
+
+    let touchEndX = 0;
+
+    let touchEndY = 0;
+
+
+    memoriesPage.addEventListener(
+        "touchstart",
+        (event) => {
+
+            const touch =
+                event.changedTouches[0];
+
+            touchStartX =
+                touch.clientX;
+
+            touchStartY =
+                touch.clientY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    memoriesPage.addEventListener(
+        "touchend",
+        (event) => {
+
+            const touch =
+                event.changedTouches[0];
+
+            touchEndX =
+                touch.clientX;
+
+            touchEndY =
+                touch.clientY;
+
+
+            handleSwipe();
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =====================================================
+       SWIPE DETECTION
+    ===================================================== */
+
+    function handleSwipe() {
+
+        const differenceX =
+            touchEndX - touchStartX;
+
+        const differenceY =
+            touchEndY - touchStartY;
+
+
+        /* Ignore mostly vertical movement */
+
+        if (
+            Math.abs(differenceX) <
+            Math.abs(differenceY)
+        ) {
+            return;
+        }
+
+
+        /* Minimum swipe distance */
+
+        if (
+            Math.abs(differenceX) <
+            45
+        ) {
+            return;
+        }
+
+
+        if (differenceX < 0) {
+
+            nextSlide();
+
+        } else {
+
+            previousSlide();
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       PAUSE WHEN USER HOLDS / HOVERS
+    ===================================================== */
+
+    memoriesPage.addEventListener(
+        "mouseenter",
+        () => {
+
+            clearInterval(
+                autoSlideTimer
+            );
+
+        }
+    );
+
+
+    memoriesPage.addEventListener(
+        "mouseleave",
+        () => {
+
+            startAutoSlide();
+
+        }
+    );
+
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    showSlide(0);
+
+    startAutoSlide();
+
+
+
+    /* =====================================================
+       EXPOSE FUNCTIONS
+       For later master navigation
+    ===================================================== */
+
+    window.showMemorySlide =
+        showSlide;
+
+    window.nextMemorySlide =
+        nextSlide;
+
+    window.previousMemorySlide =
+        previousSlide;
+
+
+    console.log(
+        "📸 Friendship slideshow initialized."
+    );
+
+})();
+
+
